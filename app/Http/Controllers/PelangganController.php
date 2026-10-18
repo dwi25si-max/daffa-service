@@ -56,7 +56,8 @@ class PelangganController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $data['dataPelanggan'] = Pelanggan::findOrFail($id);
+        return view('admin.pelanggan.edit', $data);
     }
 
     /**
@@ -64,7 +65,20 @@ class PelangganController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $pelanggan = Pelanggan::findOrFail($id);
+
+        $validated = $request->validate([
+            'first_name' => 'required',
+            'last_name'  => 'required',
+            'birthday'   => 'required|date',
+            'gender'     => 'required|in:Male,Female',
+            'email'      => 'required|email|unique:pelanggan,email,' . $id . ',pelanggan_id',
+            'phone'      => 'required|numeric',
+        ]);
+
+        $pelanggan->update($validated);
+
+        return redirect()->route('pelanggan.index')->with('success', 'Perubahan Data Berhasil!');
     }
 
     /**
