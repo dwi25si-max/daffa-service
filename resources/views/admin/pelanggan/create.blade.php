@@ -112,6 +112,18 @@
                     </div>
                 </div>
 
+                @if ($errors->any())
+                    <div class="alert alert-danger alert-dismissible fade show mt-3" role="alert">
+                        <h6 class="alert-heading fw-bold mb-1"><i class="bi bi-exclamation-triangle-fill me-2"></i>Terjadi Kesalahan Pengisian Form:</h6>
+                        <ul class="mb-0 ps-3">
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                @endif
+
                 <div class="row mt-3">
                     <div class="col-12 mb-4">
                         <div class="card border-0 shadow components-section">

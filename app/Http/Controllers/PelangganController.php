@@ -27,6 +27,9 @@ class PelangganController extends Controller
     /**
      * Store a newly created resource in storage.
      */
+    /**
+     * Store a newly created resource in storage.
+     */
     public function store(Request $request)
     {
         $validated = $request->validate([
@@ -36,6 +39,18 @@ class PelangganController extends Controller
             'gender'     => 'required|in:Male,Female',
             'email'      => 'required|email|unique:pelanggan,email',
             'phone'      => 'required|numeric',
+        ], [
+            'first_name.required' => 'first_name wajib diisi.',
+            'last_name.required'  => 'last_name wajib diisi.',
+            'birthday.required'   => 'birthday wajib diisi.',
+            'birthday.date'       => 'birthday harus berupa tanggal.',
+            'gender.required'     => 'gender wajib diisi.',
+            'gender.in'           => 'gender hanya boleh bernilai Male atau Female.',
+            'email.required'      => 'email wajib diisi.',
+            'email.email'         => 'email harus dalam format email yang valid.',
+            'email.unique'        => 'email sudah terdaftar di sistem.',
+            'phone.required'      => 'phone wajib diisi.',
+            'phone.numeric'       => 'phone harus berupa angka (numeric).',
         ]);
 
         Pelanggan::create($validated);
@@ -74,6 +89,18 @@ class PelangganController extends Controller
             'gender'     => 'required|in:Male,Female',
             'email'      => 'required|email|unique:pelanggan,email,' . $id . ',pelanggan_id',
             'phone'      => 'required|numeric',
+        ], [
+            'first_name.required' => 'first_name wajib diisi.',
+            'last_name.required'  => 'last_name wajib diisi.',
+            'birthday.required'   => 'birthday wajib diisi.',
+            'birthday.date'       => 'birthday harus berupa tanggal.',
+            'gender.required'     => 'gender wajib diisi.',
+            'gender.in'           => 'gender hanya boleh bernilai Male atau Female.',
+            'email.required'      => 'email wajib diisi.',
+            'email.email'         => 'email harus dalam format email yang valid.',
+            'email.unique'        => 'email sudah terdaftar di sistem.',
+            'phone.required'      => 'phone wajib diisi.',
+            'phone.numeric'       => 'phone harus berupa angka (numeric).',
         ]);
 
         $pelanggan->update($validated);
