@@ -1,0 +1,1681 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>PERTEMUAN 6</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+	/* Paint a complete callout box on every PDF page fragment. */
+	-webkit-box-decoration-break: clone;
+	box-decoration-break: clone;
+}
+
+/* For default-background callouts, render the border outline. */
+.callout.block-color-default_background {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+/*
+ * Toggles and callouts hold arbitrary content, so they can easily be taller
+ * than a page. They must stay breakable: avoiding breaks inside them makes
+ * Chromium push the whole block onto the next page, which leaves the previous
+ * page mostly empty before every long toggle.
+ */
+details,
+aside {
+	margin: 1.25em 0;
+}
+
+/* Keep a toggle's title on the same page as the start of its content. */
+summary {
+	page-break-after: avoid;
+	break-after: avoid;
+}
+
+/*
+ * Toggle headings render as <h1/h2/h3 style="display:inline-block"> inside
+ * <summary>. Without this reset, the heading's margin-top pushes it below the
+ * ::marker (▼), so the triangle and the title appear on separate lines.
+ */
+summary h1,
+summary h2,
+summary h3,
+summary h4 {
+	margin-top: 0;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+
+	table.collection-content {
+		width: 100%;
+		table-layout: fixed;
+	}
+
+	table.collection-content th,
+	table.collection-content td {
+		overflow-wrap: anywhere;
+	}
+
+	table.collection-content td > .user,
+	table.collection-content td > time {
+		white-space: pre-wrap;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content-wrapper {
+	overflow-x: auto;
+}
+
+@media only print {
+	.collection-content-wrapper {
+		overflow-x: visible;
+	}
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	gap: 46px;
+}
+
+.column {
+	min-width: 0;
+	overflow: hidden;
+}
+
+.column > *:first-child {
+	margin-top: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding-inline: 0.125rem;
+	padding-block: 0.375rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+table {
+	border-collapse: collapse;
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol.numbered-list.numbered-list-digits-2 {
+	padding-inline-start: 2em;
+}
+
+ol.numbered-list.numbered-list-digits-3plus {
+	padding-inline-start: 2.4em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+/*
+ * Render emoji icons using a ::before pseudo-element to keep the glyph
+ * out of the DOM textContent traversal. This avoids double-rendering icons
+ * in callouts and page titles.
+ * NOTE(slim/html-export-pseudo-icons): I can't tagref this because it will
+ * flag as a duplicate tag after codegen.
+ */
+.icon[data-emoji]::before {
+	content: attr(data-emoji);
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	margin-right: 0.4em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.tab {
+	margin: 1.25em 0;
+	padding-inline: 1rem;
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style><style>@import url('https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex-swap.min.css')</style></head><body><article id="3c254857-ba46-82e9-be0e-81f852d090b8" class="page sans"><header><h1 class="page-title" dir="auto">PERTEMUAN 6</h1><p class="page-description" dir="auto"></p><table class="properties"><tbody></tbody></table></header><div class="page-body"><details open="" class="" dir="auto"><summary style="font-weight:600;font-size:1.875em;line-height:1.3;margin:0"><h1 id="5c754857-ba46-8274-a1f5-81f769f7ff7d" style="display:inline-block">📂 Tahap Awal</h1></summary><div class="indented"><p id="41754857-ba46-8204-8a4a-0138a24f0e32" class="" dir="auto">Kita akan membuat CRUD untuk Data Pelanggan dengan skema berikut:</p><figure id="f0e54857-ba46-83cc-ba52-81275e85a80d" class="image" style="text-align:left" data-notion-image="image.png" dir="ltr"><a href="image.png"><img style="width:240px" src="image.png"/></a></figure><h3 id="17f54857-ba46-8217-9412-017390d81a15" class="block-color-default" data-notion-highlight="default" dir="auto"><strong>1. Migration </strong></h3><details id="03554857-ba46-828f-981a-01b6bdbc111d" open="" class="toggle" dir="auto"><summary>Buat migration dengan nama <code>create_pelanggan_table</code></summary><div class="indented"><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="a2254857-ba46-8372-aeaa-81226a54b54f" class="code code-wrap" data-notion-code-syntax="html"><code class="language-html" style="white-space:pre-wrap;word-break:break-all">php artisan make:migration create_pelanggan_table</code></pre><p id="62a54857-ba46-83e0-a402-8144e059b3ae" class="" dir="auto">
+</p><p id="98754857-ba46-838d-9d2f-818a2bd58703" class="" dir="auto">File baru akan dibuat pada direktori <code>database/migrations/</code> </p><div id="87f54857-ba46-82fc-9c82-0132291c25d1" class="column-list" data-notion-column-list="" dir="auto"><div id="53654857-ba46-83e9-be63-011973d3fa87" style="width:50%" class="column" data-notion-column-ratio="0.5" dir="auto"><figure id="2b454857-ba46-828e-b10f-812aba2ecbf2" class="image" data-notion-image="image%201.png" dir="ltr"><a href="image%201.png"><img style="width:551.953125px" src="image%201.png"/></a></figure><p id="82954857-ba46-8393-be62-011fbbcf202e" class="" dir="auto">
+</p></div><div id="2d354857-ba46-829c-821e-0116fe1f331c" style="width:50%" class="column" data-notion-column-ratio="0.5" dir="auto"><figure id="c7554857-ba46-8301-90f1-81696b48c66b" class="image" data-notion-image="image%202.png" dir="ltr"><a href="image%202.png"><img style="width:290px" src="image%202.png"/></a></figure></div></div><aside class="block-color-orange_background callout" data-notion-callout="" data-notion-callout-icon="⚠️" data-notion-callout-background="orange_background" style="white-space:pre-wrap;display:flex" id="b0754857-ba46-839b-af51-01f521f34900" dir="ltr"><div style="font-size:1.5em"><span class="icon" data-emoji="⚠️"></span></div><div style="width:100%"><p id="30854857-ba46-829b-865a-010031e6478e" class="" dir="auto">Penulisan nama file migration akan mempengaruhi nama table</p></div></aside><p id="6f454857-ba46-83c7-b555-011f59d2145c" class="" dir="auto">
+</p></div></details><details id="b9154857-ba46-82b2-b582-81f6db3315c4" open="" class="toggle" dir="auto"><summary>Sesuaikan function <code>up()</code> </summary><div class="indented"><p id="a2454857-ba46-83de-b0b0-01b1a316d075" class="" dir="auto">Penulisan variable harus memiliki skema <em>column</em> yang sama dengan desain table</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-markup-templating.min.js" integrity="sha512-+8BiRfWso6waiFDv6tEmWF8yfPGgxAtOYLDUB0rRISLwtpxkJ9lpPNUhxwWlikn3qSO+4RQyzDppi62o3ON/AA==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-php.min.js" integrity="sha512-plzrTi61ltEMFf84gTVO9IkvIMfBu07bnDuahvdlIclmFWzXJ9VcRsny9d45sxFZRv3jJg/MHNyuxnUYEMxMEg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><pre id="20854857-ba46-8379-a46a-81d167803e95" class="code code-wrap" data-notion-code-syntax="php"><code class="language-php" style="white-space:pre-wrap;word-break:break-all">public function up()
+{
+    Schema::create(&#x27;pelanggan&#x27;, function (Blueprint $table) {
+        $table-&gt;increments(&#x27;pelanggan_id&#x27;);
+        $table-&gt;string(&#x27;first_name&#x27;, 100);
+        $table-&gt;string(&#x27;last_name&#x27;, 100);
+        $table-&gt;date(&#x27;birthday&#x27;)-&gt;nullable();
+        $table-&gt;enum(&#x27;gender&#x27;, [&#x27;Male&#x27;, &#x27;Female&#x27;, &#x27;Other&#x27;])-&gt;nullable();
+        $table-&gt;string(&#x27;email&#x27;)-&gt;unique();
+        $table-&gt;string(&#x27;phone&#x27;, 20)-&gt;nullable();
+        $table-&gt;timestamps();
+    });
+}</code></pre><aside class="block-color-gray_background callout" data-notion-callout="" data-notion-callout-icon="⚠️" data-notion-callout-background="gray_background" style="white-space:pre-wrap;display:flex" id="1d654857-ba46-83a4-90ae-013babfaab6e" dir="ltr"><div style="font-size:1.5em"><span class="icon" data-emoji="⚠️"></span></div><div style="width:100%"><ul id="cab54857-ba46-82a9-9cea-81dd42b7ac45" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><code>$table-&gt;increments(&#x27;pelanggan_id&#x27;)</code><p id="0ac54857-ba46-8288-a4c9-0132eed4bdf4" class="" dir="auto">Berfungsi untuk membuat kolom <strong>pelanggan_id</strong> sebagai <strong>primary key</strong> yang akan <strong>bertambah otomatis (auto increment)</strong> setiap kali data baru ditambahkan.</p></li></ul><ul id="ef754857-ba46-83aa-bd82-01695b560c8b" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><code>$table-&gt;timestamps()</code><p id="ace54857-ba46-8277-8c62-01e25feac2b8" class="" dir="auto">Secara otomatis menambahkan dua kolom, yaitu <strong>created_at</strong> dan <strong>updated_at</strong>, yang digunakan untuk mencatat waktu pembuatan dan pembaruan data.Pastikan selalu ada setiap membuat table baru!</p></li></ul></div></aside><p id="82254857-ba46-82f2-8802-812c5ca6f8c1" class="" dir="auto">
+</p></div></details><details id="ff454857-ba46-832a-a35f-8186a65821d4" open="" class="toggle" dir="auto"><summary>Lakukan migration dengan perintah berikut:</summary><div class="indented"><pre id="7b254857-ba46-838f-a2f9-8191bdb5bf99" class="code code-wrap" data-notion-code-syntax="php"><code class="language-php" style="white-space:pre-wrap;word-break:break-all">php artisan migrate</code></pre><p id="28a54857-ba46-8309-9451-01c4e0a3dd3a" class="" dir="auto">
+</p><p id="9cb54857-ba46-8362-bcb3-817e8c293dd2" class="" dir="auto">Tabel baru dengan nama <code>pelanggan</code> akan di-create secara otomatis</p><figure id="eea54857-ba46-82f1-a6a9-813fe3092e16" class="image" data-notion-image="image%203.png" dir="ltr"><a href="image%203.png"><img style="width:626.0025634765625px" src="image%203.png"/></a></figure><figure id="5ac54857-ba46-82fa-8a14-81b63428657f" class="image" data-notion-image="image%204.png" dir="ltr"><a href="image%204.png"><img style="width:626.0025634765625px" src="image%204.png"/></a></figure><p id="e6754857-ba46-83b5-9174-81fe7b0af874" class="" dir="auto">
+</p></div></details><details id="74a54857-ba46-82f3-9645-81c675c8b0da" open="" class="toggle" dir="auto"><summary>Beberapa hal yang perlu diketahui tentang Migration</summary><div class="indented"><h3 id="0f354857-ba46-8275-a04c-0155a6239248" class="" dir="auto">1️⃣ Migration = Versi dari Struktur Database</h3><ul id="b5854857-ba46-83a7-8007-8142f2301161" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Migration bukan data, tapi <strong>definisi struktur tabel</strong>.</li></ul><ul id="e2654857-ba46-822c-8bc4-817cb6b4f8d4" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Tujuannya seperti <em>version control</em> untuk database, sehingga bisa tahu kapan tabel dibuat, diubah, atau dihapus.</li></ul><h3 id="57f54857-ba46-82b6-af82-01c8833db526" class="" dir="auto">2️⃣ Migration Dijalankan secara berurutan</h3><ul id="25c54857-ba46-8388-a4ff-81d2543b0c5b" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Setiap migration adalah file PHP dengan nama format waktu:<pre id="6c554857-ba46-836f-9910-81f20f62417b" class="code code-wrap"><code style="white-space:pre-wrap;word-break:break-all">2025_10_13_123456_create_users_table.php</code></pre><ul id="e7e54857-ba46-83a6-a2ca-01ebca8689c5" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Nama ini membantu Laravel tahu <strong>urutan eksekusi</strong> migration.</li></ul></li></ul><ul id="88a54857-ba46-834a-bef1-012ccf24b304" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Saat dijalankan, Laravel membaca semua migration yang <strong>belum pernah dijalankan</strong> </li></ul><h3 id="7b754857-ba46-837a-96f1-013f922a5fdf" class="" dir="auto">3️⃣ Migration Hanya Dijalankan Sekali</h3><ul id="c3a54857-ba46-8251-a00b-813005c20fc3" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Setelah dijalankan, catatan disimpan di tabel <code>migrations</code>.</li></ul><ul id="95354857-ba46-8278-8409-013431f603d8" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Meski merubah nama file migration, perubahan itu tidak otomatis dijalankan ulang kecuali di batalkan terlebih dulu.</li></ul><h3 id="0c454857-ba46-82bd-9cb8-016bd421f994" class="" dir="auto">4️⃣ Migration Bisa Dibatalkan</h3><ul id="6d854857-ba46-83dc-980d-01a69d8c70c8" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Gunakan:<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-bash.min.js" integrity="sha512-whYhDwtTmlC/NpZlCr6PSsAaLOrfjVg/iXAnC4H/dtiHawpShhT2SlIMbpIhT/IL/NrpdMm+Hq2C13+VKpHTYw==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><pre id="8eb54857-ba46-8268-bc7c-0197051d29b0" class="code code-wrap" data-notion-code-syntax="bash"><code class="language-bash" style="white-space:pre-wrap;word-break:break-all">php artisan migrate:rollback</code></pre><p id="56554857-ba46-8283-811f-01ad2a7cda3c" class="" dir="auto">untuk membatalkan 1 batch terakhir<br/>(1 batch = sekumpulan migration yang dijalankan melalui <code>php artisan migrate</code>).</p></li></ul><ul id="5bb54857-ba46-83cb-87de-0147fc654145" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Atau:<pre id="c4454857-ba46-8284-98f9-81aec47de869" class="code code-wrap" data-notion-code-syntax="bash"><code class="language-bash" style="white-space:pre-wrap;word-break:break-all">php artisan migrate:fresh</code></pre><p id="c9354857-ba46-821d-bfa0-01645653d353" class="" dir="auto"><mark class="highlight-red" data-notion-highlight="red">untuk hapus semua tabel lalu jalankan ulang semua migration dari awal </mark></p></li></ul><h3 id="97554857-ba46-83a2-878b-01f56ce1e068" class="" dir="auto">6️⃣ Migration Bisa Berisi <code>up()</code> dan <code>down()</code></h3><ul id="f3954857-ba46-8328-81b9-01d23a9be77b" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Fungsi <code>up()</code> berisi instruksi <strong>membuat/menambah kolom/tabel</strong>.</li></ul><ul id="78954857-ba46-83ea-b35b-8142f1f173bd" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Fungsi <code>down()</code> berisi <strong>cara membatalkan perubahan tersebut</strong> (biasanya <code>dropTable</code> atau <code>dropColumn</code>).</li></ul><h3 id="b6c54857-ba46-8207-b5dd-01167535f95c" class="" dir="auto">7️⃣ Jangan modifikasi migration yang sudah di-migrate</h3><ul id="84554857-ba46-82c2-82c2-81f148535613" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Jangan asal ubah file migration. Kecuali sudah rollback</li></ul><ul id="e1654857-ba46-8395-b2c0-011fe2a3ac5a" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Lebih baik buat <strong>migration baru</strong> (misalnya <code>add_phone_to_users_table</code>) untuk menambah kolom baru.</li></ul><h3 id="59a54857-ba46-8290-9c22-812b1cbdc3ac" class="" dir="auto">8️⃣ Migration = Alat Kolaborasi Tim</h3><ul id="4d554857-ba46-821d-aff4-01495b7cc5ba" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Dengan migration, semua anggota tim bisa memiliki <strong>struktur database yang sama</strong> tanpa kirim file <code>.sql</code> manual.</li></ul></div></details><h3 id="e3b54857-ba46-82d5-9744-810dda76d408" class="" dir="auto"><strong>2. Model </strong></h3><details id="5e154857-ba46-838c-a785-01bb85a17f84" open="" class="toggle" dir="auto"><summary>Buat model baru dengan nama <code>Pelanggan</code></summary><div class="indented"><pre id="37654857-ba46-82ea-a5d8-81d70dc2bc42" class="code code-wrap" data-notion-code-syntax="bash"><code class="language-bash" style="white-space:pre-wrap;word-break:break-all">php artisan make:model Pelanggan</code></pre><p id="81354857-ba46-83e3-b67f-01a9971e65c1" class="" dir="auto">
+</p><p id="f0154857-ba46-83a4-a7da-813c0938e326" class="" dir="auto">File baru akan terbentuk di <code>app/models</code> dengan nama <code>Pelanggan.php</code></p><div id="38a54857-ba46-82c1-b52b-01f5764642d7" class="column-list" data-notion-column-list="" dir="auto"><div id="1e854857-ba46-83fb-a0ed-81d1e5224dbf" style="width:31.25%" class="column" data-notion-column-ratio="0.3125" dir="auto"><figure id="05354857-ba46-826d-88b6-811151ac00a8" class="image" style="text-align:center" data-notion-image="image%205.png" dir="ltr"><a href="image%205.png"><img style="width:192px" src="image%205.png"/></a></figure><p id="d7d54857-ba46-838b-95c5-0130a7e25f01" class="" dir="auto">
+</p><p id="16f54857-ba46-82b0-a4ce-8154acc88111" class="" dir="auto">
+</p></div><div id="65e54857-ba46-825b-92b0-81825ef82816" style="width:68.75%" class="column" data-notion-column-ratio="0.6875" dir="auto"><figure id="77c54857-ba46-8227-a748-01f98b03b58e" class="image" data-notion-image="image%206.png" dir="ltr"><a href="image%206.png"><img style="width:362.5px" src="image%206.png"/></a><figcaption>Isi file model secara default</figcaption></figure><p id="dca54857-ba46-828e-a669-81c5a5af512c" class="" dir="auto">
+</p></div></div></div></details><details id="50b54857-ba46-82e3-a285-0174a53076f5" open="" class="toggle" dir="auto"><summary>Sesuaikan isi model <code>Pelanggan</code> </summary><div class="indented"><div id="71a54857-ba46-825c-aebe-81940e403df5" class="column-list" data-notion-column-list="" dir="auto"><div id="91754857-ba46-824e-865d-81f5ae9ca593" style="width:43.75%" class="column" data-notion-column-ratio="0.4375" dir="auto"><p id="aaf54857-ba46-82be-adbb-0123d1f42407" class="" dir="auto"><code>$table</code>  → nama table</p><p id="5cc54857-ba46-8394-8e39-01f96fbce603" class="" dir="auto"><code>$primaryKey</code> → nama kolom yang menjadi primary key</p><p id="47754857-ba46-83a0-8d1c-81292c9fb395" class="" dir="auto"><code>$fillable</code> → kolom yang diperbolehkan untuk diisi </p></div><div id="97054857-ba46-82c4-af9a-81278834201a" style="width:56.25%" class="column" data-notion-column-ratio="0.5625" dir="auto"><figure id="57b54857-ba46-8342-b17f-811a8dfeebf1" class="image" data-notion-image="image%207.png" dir="ltr"><a href="image%207.png"><img style="width:326.25px" src="image%207.png"/></a></figure></div></div><aside class="block-color-brown_background callout" data-notion-callout="" data-notion-callout-icon="⚠️" data-notion-callout-background="brown_background" style="white-space:pre-wrap;display:flex" id="dba54857-ba46-8396-acfb-018d8176fb11" dir="ltr"><div style="font-size:1.5em"><span class="icon" data-emoji="⚠️"></span></div><div style="width:100%"><p id="a8754857-ba46-823d-8edd-01262dee5cb2" class="" dir="auto">Jika <code>fillable</code> tidak ditentukan, maka data tidak akan bisa tersimpan</p></div></aside></div></details><h3 id="7a554857-ba46-83d1-b4f0-014a1e0f81b9" class="" dir="auto"><strong>3. Controller </strong></h3><details id="fa754857-ba46-827e-aa1b-81b6600e5471" open="" class="toggle" dir="auto"><summary>Buat resource controller dengan nama <code>PelangganController</code></summary><div class="indented"><pre id="05e54857-ba46-83eb-8174-816628673e07" class="code code-wrap" data-notion-code-syntax="php"><code class="language-php" style="white-space:pre-wrap;word-break:break-all">php artisan make:controller PelangganController --resource</code></pre><p id="cb554857-ba46-831f-9dae-01cc00d21931" class="" dir="auto">
+</p></div></details><details id="0c154857-ba46-838a-ad68-018b7b6bbc03" open="" class="toggle" dir="auto"><summary>Gunakan route yang mewakili seluruh function di <code>PelangganController</code> pada <code>web.php</code> </summary><div class="indented"><figure id="8c754857-ba46-8282-ba87-81ceac717060" data-notion-code-syntax="php"><pre class="code code-wrap" data-notion-code-syntax="php"><code class="language-php" style="white-space:pre-wrap;word-break:break-all">Route::resource(&#x27;pelanggan&#x27;, PelangganController::class);</code></pre><figcaption>Jangan lupa import class PelangganController!</figcaption></figure><aside class="block-color-gray_background callout" data-notion-callout="" data-notion-callout-icon="⚠️" data-notion-callout-background="gray_background" style="white-space:pre-wrap;display:flex" id="12754857-ba46-83fe-af53-01e55cc05c15" dir="ltr"><div style="font-size:1.5em"><span class="icon" data-emoji="⚠️"></span></div><div style="width:100%"><p id="a1954857-ba46-8236-b34d-010cca6757c4" class="" dir="auto">Dengan <code>Route::resource</code> , kita tidak perlu membuat route satu per satu untuk function <code>index</code>, <code>create</code>, <code>show</code> , <code>edit</code>, <code>update</code> , <code>destroy</code>  karena laravel secara otomatis membuatkan route dengan alias :</p><p id="58e54857-ba46-827c-a064-010395c2920a" class="" dir="auto"><code>pelanggan.index</code> <code>pelanggan.create</code> <code>pelanggan.show</code></p><p id="d0c54857-ba46-839f-a71f-017da609ccbc" class="" dir="auto"><code>pelanggan.edit</code> <code>pelanggan.update</code> <code>pelanggan.destroy</code></p></div></aside><p id="5ca54857-ba46-838e-b047-8199214fb7f9" class="" dir="auto">
+</p></div></details><p id="61a54857-ba46-83de-a378-01652764cc3d" class="" dir="auto">
+</p><hr id="71054857-ba46-82a1-80a0-8132a9f1f06b" dir="auto"/></div></details><details open="" class="" dir="auto"><summary style="font-weight:600;font-size:1.875em;line-height:1.3;margin:0"><h1 id="ffe54857-ba46-8227-a7eb-01101cbffe7e" style="display:inline-block">📂 Create</h1></summary><div class="indented"><details id="65654857-ba46-82db-a655-81cbd2a3cfd9" open="" class="toggle" dir="auto"><summary>1️⃣ Sesuaikan function  <code>create()</code></summary><div class="indented"><p id="c5054857-ba46-8357-b576-018df00918c1" class="" dir="auto">Buat folder <code>pelanggan</code> di <code>resources/views/admin</code> , lalu buat file <code>create.blade.php</code> </p><figure id="46354857-ba46-8224-be97-018c8d56ef18" class="image" data-notion-image="image%208.png" dir="ltr"><a href="image%208.png"><img style="width:192px" src="image%208.png"/></a></figure><p id="38454857-ba46-82e0-a46a-01dd1b2147fa" class="" dir="auto">Tampilkan view <code>admin.pelanggan.create</code> saat mengakses <code>create()</code></p><pre id="78e54857-ba46-8257-aee7-01dcdb43e7be" class="code code-wrap" data-notion-code-syntax="php"><code class="language-php" style="white-space:pre-wrap;word-break:break-all">public function create(){
+		return view(&#x27;admin.pelanggan.create&#x27;);
+}</code></pre><p id="76e54857-ba46-8308-ab9b-81543705da14" class="" dir="auto">
+</p></div></details><details id="c9854857-ba46-836f-8b28-8116513034f3" open="" class="toggle" dir="auto"><summary>2️⃣ Sesuaikan <code>create.blade.php</code> </summary><div class="indented"><p id="f2c54857-ba46-82df-bcb2-0114348b3cdc" class="" dir="auto">salin SELURUH kode berikut:</p><details id="5b654857-ba46-82ac-9988-0180e41fd0bc" open="" class="block-color-orange toggle" data-notion-highlight="orange" dir="auto"><summary><strong>Lihat Kode</strong></summary><div class="indented"><pre id="1c654857-ba46-8285-98f3-0110ef1c90a6" class="code code-wrap" data-notion-code-syntax="html"><code class="language-html" style="white-space:pre-wrap;word-break:break-all">&lt;!--
+
+=========================================================
+* Volt Pro - Premium Bootstrap 5 Dashboard
+=========================================================
+
+* Product Page: https://themesberg.com/product/admin-dashboard/volt-bootstrap-5-dashboard
+* Copyright 2021 Themesberg (https://www.themesberg.com)
+* License (https://themesberg.com/licensing)
+
+* Designed and coded by https://themesberg.com
+
+=========================================================
+
+* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. Please contact us to request a removal.
+
+--&gt;
+&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;
+    &lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot; /&gt;
+    &lt;!-- Primary Meta Tags --&gt;
+	&lt;title&gt;Volt - Free Bootstrap 5 Dashboard&lt;/title&gt;
+	&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1, shrink-to-fit=no&quot;&gt;
+	&lt;meta name=&quot;title&quot; content=&quot;Volt - Free Bootstrap 5 Dashboard&quot;&gt;
+	&lt;meta name=&quot;author&quot; content=&quot;Themesberg&quot;&gt;
+
+	&lt;!-- Favicon --&gt;
+	&lt;link rel=&quot;apple-touch-icon&quot; sizes=&quot;120x120&quot; href=&quot;{{asset(&#x27;assets-admin/img/favicon/apple-touch-icon.png&#x27;)}}&quot;&gt;
+	&lt;link rel=&quot;icon&quot; type=&quot;image/png&quot; sizes=&quot;32x32&quot; href=&quot;{{asset(&#x27;assets-admin/img/favicon/favicon-32x32.png&#x27;)}}&quot;&gt;
+	&lt;link rel=&quot;icon&quot; type=&quot;image/png&quot; sizes=&quot;16x16&quot; href=&quot;{{asset(&#x27;assets-admin/img/favicon/favicon-16x16.png&#x27;)}}&quot;&gt;
+	&lt;link rel=&quot;manifest&quot; href=&quot;{{asset(&#x27;assets-admin/img/favicon/site.webmanifest&#x27;)}}&quot;&gt;
+	&lt;link rel=&quot;mask-icon&quot; href=&quot;{{asset(&#x27;assets-admin/img/favicon/safari-pinned-tab.svg&#x27;)}}&quot; color=&quot;#ffffff&quot;&gt;
+	&lt;meta name=&quot;msapplication-TileColor&quot; content=&quot;#ffffff&quot;&gt;
+	&lt;meta name=&quot;theme-color&quot; content=&quot;#ffffff&quot;&gt;
+
+    &lt;!-- Volt CSS --&gt;
+    &lt;link type=&quot;text/css&quot; href=&quot;{{asset(&#x27;assets-admin/css/volt.css&#x27;) }}&quot; rel=&quot;stylesheet&quot;&gt;
+
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;nav class=&quot;navbar navbar-dark navbar-theme-primary px-4 col-12 d-lg-none&quot;&gt;
+        &lt;a class=&quot;navbar-brand me-lg-5&quot; href=&quot;../../index.html&quot;&gt;
+            &lt;img class=&quot;navbar-brand-dark&quot; src=&quot;{{ asset(&#x27;assets-admin/img/brand/light.svg&#x27;) }}&quot; alt=&quot;Volt logo&quot; /&gt; &lt;img class=&quot;navbar-brand-light&quot; src=&quot;{{ asset(&#x27;&#x27;) }}assets-admin/img/brand/dark.svg&quot; alt=&quot;Volt logo&quot; /&gt;
+        &lt;/a&gt;
+        &lt;div class=&quot;d-flex align-items-center&quot;&gt;
+            &lt;button class=&quot;navbar-toggler d-lg-none collapsed&quot; type=&quot;button&quot; data-bs-toggle=&quot;collapse&quot; data-bs-target=&quot;#sidebarMenu&quot; aria-controls=&quot;sidebarMenu&quot; aria-expanded=&quot;false&quot; aria-label=&quot;Toggle navigation&quot;&gt;
+                &lt;span class=&quot;navbar-toggler-icon&quot;&gt;&lt;/span&gt;
+            &lt;/button&gt;
+        &lt;/div&gt;
+    &lt;/nav&gt;
+
+    &lt;nav id=&quot;sidebarMenu&quot; class=&quot;sidebar d-lg-block bg-gray-800 text-white collapse&quot; data-simplebar&gt;
+        &lt;div class=&quot;sidebar-inner px-4 pt-3&quot;&gt;
+            &lt;div class=&quot;user-card d-flex d-md-none align-items-center justify-content-between justify-content-md-center pb-4&quot;&gt;
+                &lt;div class=&quot;d-flex align-items-center&quot;&gt;
+                    &lt;div class=&quot;avatar-lg me-4&quot;&gt;
+                        &lt;img src=&quot;{{ asset(&#x27;assets-admin/img/team/profile-picture-3.jpg&#x27;) }}&quot; class=&quot;card-img-top rounded-circle border-white&quot; alt=&quot;Bonnie Green&quot;&gt;
+                    &lt;/div&gt;
+                    &lt;div class=&quot;d-block&quot;&gt;
+                        &lt;h2 class=&quot;h5 mb-3&quot;&gt;Hi, Jane&lt;/h2&gt;
+                        &lt;a href=&quot;../../pages/examples/sign-in.html&quot; class=&quot;btn btn-secondary btn-sm d-inline-flex align-items-center&quot;&gt;
+                            &lt;svg class=&quot;icon icon-xxs me-1&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; viewBox=&quot;0 0 24 24&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;&gt;
+                                &lt;path stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot; stroke-width=&quot;2&quot; d=&quot;M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1&quot;&gt;
+                                &lt;/path&gt;
+                            &lt;/svg&gt;
+                            Sign Out
+                        &lt;/a&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+                &lt;div class=&quot;collapse-close d-md-none&quot;&gt;
+                    &lt;a href=&quot;#sidebarMenu&quot; data-bs-toggle=&quot;collapse&quot; data-bs-target=&quot;#sidebarMenu&quot; aria-controls=&quot;sidebarMenu&quot; aria-expanded=&quot;true&quot; aria-label=&quot;Toggle navigation&quot;&gt;
+                        &lt;svg class=&quot;icon icon-xs&quot; fill=&quot;currentColor&quot; viewBox=&quot;0 0 20 20&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;&gt;
+                            &lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z&quot; clip-rule=&quot;evenodd&quot;&gt;&lt;/path&gt;
+                        &lt;/svg&gt;
+                    &lt;/a&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;ul class=&quot;nav flex-column pt-3 pt-md-0&quot;&gt;
+                &lt;li class=&quot;nav-item&quot;&gt;
+                    &lt;a href=&quot;../../index.html&quot; class=&quot;nav-link d-flex align-items-center&quot;&gt;
+                        &lt;span class=&quot;sidebar-icon&quot;&gt;
+                            &lt;img src=&quot;{{ asset(&#x27;assets-admin/img/brand/light.svg&#x27;) }}&quot; height=&quot;20&quot; width=&quot;20&quot; alt=&quot;Volt Logo&quot;&gt;
+                        &lt;/span&gt;
+                        &lt;span class=&quot;mt-1 ms-1 sidebar-text&quot;&gt;Volt Overview&lt;/span&gt;
+                    &lt;/a&gt;
+                &lt;/li&gt;
+                &lt;li class=&quot;nav-item  active &quot;&gt;
+                    &lt;a href=&quot;{{ route(&#x27;dashboard&#x27;) }}&quot; class=&quot;nav-link&quot;&gt;
+                        &lt;span class=&quot;sidebar-icon&quot;&gt;
+                            &lt;svg class=&quot;icon icon-xs me-2&quot; fill=&quot;currentColor&quot; viewBox=&quot;0 0 20 20&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;&gt;
+                                &lt;path d=&quot;M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z&quot;&gt;&lt;/path&gt;
+                                &lt;path d=&quot;M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z&quot;&gt;&lt;/path&gt;
+                            &lt;/svg&gt;
+                        &lt;/span&gt;
+                        &lt;span class=&quot;sidebar-text&quot;&gt;Dashboard&lt;/span&gt;
+                    &lt;/a&gt;
+                &lt;/li&gt;
+
+                &lt;li role=&quot;separator&quot; class=&quot;dropdown-divider mt-4 mb-3 border-gray-700&quot;&gt;&lt;/li&gt;
+                &lt;li class=&quot;nav-item&quot;&gt;
+                    &lt;a href=&quot;https://themesberg.com/docs/volt-bootstrap-5-dashboard/getting-started/quick-start/&quot; target=&quot;_blank&quot; class=&quot;nav-link d-flex align-items-center&quot;&gt;
+                        &lt;span class=&quot;sidebar-icon&quot;&gt;
+                            &lt;svg class=&quot;icon icon-xs me-2&quot; fill=&quot;currentColor&quot; viewBox=&quot;0 0 20 20&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;&gt;
+                                &lt;path fill-rule=&quot;evenodd&quot; d=&quot;M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z&quot; clip-rule=&quot;evenodd&quot;&gt;&lt;/path&gt;
+                            &lt;/svg&gt;
+                        &lt;/span&gt;
+                        &lt;span class=&quot;sidebar-text&quot;&gt;Documentation &lt;span class=&quot;badge badge-sm bg-secondary ms-1 text-gray-800&quot;&gt;v1.4&lt;/span&gt;&lt;/span&gt;
+                    &lt;/a&gt;
+                &lt;/li&gt;
+                &lt;li class=&quot;nav-item&quot;&gt;
+                    &lt;a href=&quot;../../pages/upgrade-to-pro.html&quot; class=&quot;btn btn-secondary d-flex align-items-center justify-content-center btn-upgrade-pro&quot;&gt;
+                        &lt;span class=&quot;sidebar-icon d-inline-flex align-items-center justify-content-center&quot;&gt;
+                            &lt;svg class=&quot;icon icon-xs me-2&quot; fill=&quot;currentColor&quot; viewBox=&quot;0 0 20 20&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;&gt;
+                                &lt;path fill-rule=&quot;evenodd&quot; d=&quot;M12.395 2.553a1 1 0 00-1.45-.385c-.345.23-.614.558-.822.88-.214.33-.403.713-.57 1.116-.334.804-.614 1.768-.84 2.734a31.365 31.365 0 00-.613 3.58 2.64 2.64 0 01-.945-1.067c-.328-.68-.398-1.534-.398-2.654A1 1 0 005.05 6.05 6.981 6.981 0 003 11a7 7 0 1011.95-4.95c-.592-.591-.98-.985-1.348-1.467-.363-.476-.724-1.063-1.207-2.03zM12.12 15.12A3 3 0 017 13s.879.5 2.5.5c0-1 .5-4 1.25-4.5.5 1 .786 1.293 1.371 1.879A2.99 2.99 0 0113 13a2.99 2.99 0 01-.879 2.121z&quot; clip-rule=&quot;evenodd&quot;&gt;&lt;/path&gt;
+                            &lt;/svg&gt;
+                        &lt;/span&gt;
+                        &lt;span&gt;Upgrade to Pro&lt;/span&gt;
+                    &lt;/a&gt;
+                &lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/div&gt;
+    &lt;/nav&gt;
+
+    &lt;main class=&quot;content&quot;&gt;
+
+        &lt;nav class=&quot;navbar navbar-top navbar-expand navbar-dashboard navbar-dark ps-0 pe-2 pb-0&quot;&gt;
+            &lt;div class=&quot;container-fluid px-0&quot;&gt;
+                &lt;div class=&quot;d-flex justify-content-between w-100&quot; id=&quot;navbarSupportedContent&quot;&gt;
+                    &lt;div class=&quot;d-flex align-items-center&quot;&gt;
+                        &lt;!-- Search form --&gt;
+                        &lt;form class=&quot;navbar-search form-inline&quot; id=&quot;navbar-search-main&quot;&gt;
+                            &lt;div class=&quot;input-group input-group-merge search-bar&quot;&gt;
+                                &lt;span class=&quot;input-group-text&quot; id=&quot;topbar-addon&quot;&gt;
+                                    &lt;svg class=&quot;icon icon-xs&quot; x-description=&quot;Heroicon name: solid/search&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; viewBox=&quot;0 0 20 20&quot; fill=&quot;currentColor&quot; aria-hidden=&quot;true&quot;&gt;
+                                        &lt;path fill-rule=&quot;evenodd&quot; d=&quot;M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z&quot; clip-rule=&quot;evenodd&quot;&gt;&lt;/path&gt;
+                                    &lt;/svg&gt;
+                                &lt;/span&gt;
+                                &lt;input type=&quot;text&quot; class=&quot;form-control&quot; id=&quot;topbarInputIconLeft&quot; placeholder=&quot;Search&quot; aria-label=&quot;Search&quot; aria-describedby=&quot;topbar-addon&quot;&gt;
+                            &lt;/div&gt;
+                        &lt;/form&gt;
+                        &lt;!-- / Search form --&gt;
+                    &lt;/div&gt;
+                    &lt;!-- Navbar links --&gt;
+                    &lt;ul class=&quot;navbar-nav align-items-center&quot;&gt;
+                        &lt;li class=&quot;nav-item dropdown&quot;&gt;
+                            &lt;a class=&quot;nav-link text-dark notification-bell unread dropdown-toggle&quot; data-unread-notifications=&quot;true&quot; href=&quot;#&quot; role=&quot;button&quot; data-bs-toggle=&quot;dropdown&quot; data-bs-display=&quot;static&quot; aria-expanded=&quot;false&quot;&gt;
+                                &lt;svg class=&quot;icon icon-sm text-gray-900&quot; fill=&quot;currentColor&quot; viewBox=&quot;0 0 20 20&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;&gt;
+                                    &lt;path d=&quot;M10 2a6 6 0 00-6 6v3.586l-.707.707A1 1 0 004 14h12a1 1 0 00.707-1.707L16 11.586V8a6 6 0 00-6-6zM10 18a3 3 0 01-3-3h6a3 3 0 01-3 3z&quot;&gt;&lt;/path&gt;
+                                &lt;/svg&gt;
+                            &lt;/a&gt;
+                            &lt;div class=&quot;dropdown-menu dropdown-menu-lg dropdown-menu-center mt-2 py-0&quot;&gt;
+                                &lt;div class=&quot;list-group list-group-flush&quot;&gt;
+                                    &lt;a href=&quot;#&quot; class=&quot;text-center text-primary fw-bold border-bottom border-light py-3&quot;&gt;Notifications&lt;/a&gt;
+                                    &lt;a href=&quot;#&quot; class=&quot;list-group-item list-group-item-action border-bottom&quot;&gt;
+                                        &lt;div class=&quot;row align-items-center&quot;&gt;
+                                            &lt;div class=&quot;col-auto&quot;&gt;
+                                                &lt;!-- Avatar --&gt;
+                                                &lt;img alt=&quot;Image placeholder&quot; src=&quot;{{ asset(&#x27;assets-admin/img/team/profile-picture-1.jpg&#x27;) }}&quot; class=&quot;avatar-md rounded&quot;&gt;
+                                            &lt;/div&gt;
+                                            &lt;div class=&quot;col ps-0 ms-2&quot;&gt;
+                                                &lt;div class=&quot;d-flex justify-content-between align-items-center&quot;&gt;
+                                                    &lt;div&gt;
+                                                        &lt;h4 class=&quot;h6 mb-0 text-small&quot;&gt;Jose Leos&lt;/h4&gt;
+                                                    &lt;/div&gt;
+                                                    &lt;div class=&quot;text-end&quot;&gt;
+                                                        &lt;small class=&quot;text-danger&quot;&gt;a few moments ago&lt;/small&gt;
+                                                    &lt;/div&gt;
+                                                &lt;/div&gt;
+                                                &lt;p class=&quot;font-small mt-1 mb-0&quot;&gt;Added you to an event &quot;Project stand-up&quot; tomorrow at 12:30 AM.&lt;/p&gt;
+                                            &lt;/div&gt;
+                                        &lt;/div&gt;
+                                    &lt;/a&gt;
+                                    &lt;a href=&quot;#&quot; class=&quot;list-group-item list-group-item-action border-bottom&quot;&gt;
+                                        &lt;div class=&quot;row align-items-center&quot;&gt;
+                                            &lt;div class=&quot;col-auto&quot;&gt;
+                                                &lt;!-- Avatar --&gt;
+                                                &lt;img alt=&quot;Image placeholder&quot; src=&quot;{{ asset(&#x27;assets-admin/img/team/profile-picture-2.jpg&#x27;) }}&quot; class=&quot;avatar-md rounded&quot;&gt;
+                                            &lt;/div&gt;
+                                            &lt;div class=&quot;col ps-0 ms-2&quot;&gt;
+                                                &lt;div class=&quot;d-flex justify-content-between align-items-center&quot;&gt;
+                                                    &lt;div&gt;
+                                                        &lt;h4 class=&quot;h6 mb-0 text-small&quot;&gt;Neil Sims&lt;/h4&gt;
+                                                    &lt;/div&gt;
+                                                    &lt;div class=&quot;text-end&quot;&gt;
+                                                        &lt;small class=&quot;text-danger&quot;&gt;2 hrs ago&lt;/small&gt;
+                                                    &lt;/div&gt;
+                                                &lt;/div&gt;
+                                                &lt;p class=&quot;font-small mt-1 mb-0&quot;&gt;You&#x27;ve been assigned a task for &quot;Awesome new project&quot;.&lt;/p&gt;
+                                            &lt;/div&gt;
+                                        &lt;/div&gt;
+                                    &lt;/a&gt;
+                                    &lt;a href=&quot;#&quot; class=&quot;list-group-item list-group-item-action border-bottom&quot;&gt;
+                                        &lt;div class=&quot;row align-items-center&quot;&gt;
+                                            &lt;div class=&quot;col-auto&quot;&gt;
+                                                &lt;!-- Avatar --&gt;
+                                                &lt;img alt=&quot;Image placeholder&quot; src=&quot;{{ asset(&#x27;assets-admin/img/team/profile-picture-3.jpg&#x27;) }}&quot; class=&quot;avatar-md rounded&quot;&gt;
+                                            &lt;/div&gt;
+                                            &lt;div class=&quot;col ps-0 m-2&quot;&gt;
+                                                &lt;div class=&quot;d-flex justify-content-between align-items-center&quot;&gt;
+                                                    &lt;div&gt;
+                                                        &lt;h4 class=&quot;h6 mb-0 text-small&quot;&gt;Roberta Casas&lt;/h4&gt;
+                                                    &lt;/div&gt;
+                                                    &lt;div class=&quot;text-end&quot;&gt;
+                                                        &lt;small&gt;5 hrs ago&lt;/small&gt;
+                                                    &lt;/div&gt;
+                                                &lt;/div&gt;
+                                                &lt;p class=&quot;font-small mt-1 mb-0&quot;&gt;Tagged you in a document called &quot;Financial plans&quot;,&lt;/p&gt;
+                                            &lt;/div&gt;
+                                        &lt;/div&gt;
+                                    &lt;/a&gt;
+                                    &lt;a href=&quot;#&quot; class=&quot;dropdown-item text-center fw-bold rounded-bottom py-3&quot;&gt;
+                                        &lt;svg class=&quot;icon icon-xxs text-gray-400 me-1&quot; fill=&quot;currentColor&quot; viewBox=&quot;0 0 20 20&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;&gt;
+                                            &lt;path d=&quot;M10 12a2 2 0 100-4 2 2 0 000 4z&quot;&gt;&lt;/path&gt;
+                                            &lt;path fill-rule=&quot;evenodd&quot; d=&quot;M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z&quot; clip-rule=&quot;evenodd&quot;&gt;&lt;/path&gt;
+                                        &lt;/svg&gt;
+                                        View all
+                                    &lt;/a&gt;
+                                &lt;/div&gt;
+                            &lt;/div&gt;
+                        &lt;/li&gt;
+                        &lt;li class=&quot;nav-item dropdown ms-lg-3&quot;&gt;
+                            &lt;a class=&quot;nav-link dropdown-toggle pt-1 px-0&quot; href=&quot;#&quot; role=&quot;button&quot; data-bs-toggle=&quot;dropdown&quot; aria-expanded=&quot;false&quot;&gt;
+                                &lt;div class=&quot;media d-flex align-items-center&quot;&gt;
+                                    &lt;img class=&quot;avatar rounded-circle&quot; alt=&quot;Image placeholder&quot; src=&quot;{{ asset(&#x27;assets-admin/img/team/profile-picture-3.jpg&#x27;) }}&quot;&gt;
+                                    &lt;div class=&quot;media-body ms-2 text-dark align-items-center d-none d-lg-block&quot;&gt;
+                                        &lt;span class=&quot;mb-0 font-small fw-bold text-gray-900&quot;&gt;Bonnie Green&lt;/span&gt;
+                                    &lt;/div&gt;
+                                &lt;/div&gt;
+                            &lt;/a&gt;
+                            &lt;div class=&quot;dropdown-menu dashboard-dropdown dropdown-menu-end mt-2 py-1&quot;&gt;
+                                &lt;a class=&quot;dropdown-item d-flex align-items-center&quot; href=&quot;#&quot;&gt;
+                                    &lt;svg class=&quot;dropdown-icon text-gray-400 me-2&quot; fill=&quot;currentColor&quot; viewBox=&quot;0 0 20 20&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;&gt;
+                                        &lt;path fill-rule=&quot;evenodd&quot; d=&quot;M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-6-3a2 2 0 11-4 0 2 2 0 014 0zm-2 4a5 5 0 00-4.546 2.916A5.986 5.986 0 0010 16a5.986 5.986 0 004.546-2.084A5 5 0 0010 11z&quot; clip-rule=&quot;evenodd&quot;&gt;&lt;/path&gt;
+                                    &lt;/svg&gt;
+                                    My Profile
+                                &lt;/a&gt;
+                                &lt;a class=&quot;dropdown-item d-flex align-items-center&quot; href=&quot;#&quot;&gt;
+                                    &lt;svg class=&quot;dropdown-icon text-gray-400 me-2&quot; fill=&quot;currentColor&quot; viewBox=&quot;0 0 20 20&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;&gt;
+                                        &lt;path fill-rule=&quot;evenodd&quot; d=&quot;M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z&quot; clip-rule=&quot;evenodd&quot;&gt;&lt;/path&gt;
+                                    &lt;/svg&gt;
+                                    Settings
+                                &lt;/a&gt;
+                                &lt;div role=&quot;separator&quot; class=&quot;dropdown-divider my-1&quot;&gt;&lt;/div&gt;
+                                &lt;a class=&quot;dropdown-item d-flex align-items-center&quot; href=&quot;#&quot;&gt;
+                                    &lt;svg class=&quot;dropdown-icon text-danger me-2&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; viewBox=&quot;0 0 24 24&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;&gt;
+                                        &lt;path stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot; stroke-width=&quot;2&quot; d=&quot;M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1&quot;&gt;&lt;/path&gt;
+                                    &lt;/svg&gt;
+                                    Logout
+                                &lt;/a&gt;
+                            &lt;/div&gt;
+                        &lt;/li&gt;
+                    &lt;/ul&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/nav&gt;
+
+        &lt;div class=&quot;py-4&quot;&gt;
+            &lt;nav aria-label=&quot;breadcrumb&quot; class=&quot;d-none d-md-inline-block&quot;&gt;
+                &lt;ol class=&quot;breadcrumb breadcrumb-dark breadcrumb-transparent&quot;&gt;
+                    &lt;li class=&quot;breadcrumb-item&quot;&gt;
+                        &lt;a href=&quot;#&quot;&gt;
+                            &lt;svg class=&quot;icon icon-xxs&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; viewBox=&quot;0 0 24 24&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;&gt;
+                                &lt;path stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot; stroke-width=&quot;2&quot; d=&quot;M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6&quot;&gt;&lt;/path&gt;
+                            &lt;/svg&gt;
+                        &lt;/a&gt;
+                    &lt;/li&gt;
+                    &lt;li class=&quot;breadcrumb-item&quot;&gt;&lt;a href=&quot;#&quot;&gt;Pelanggan&lt;/a&gt;&lt;/li&gt;
+                    &lt;li class=&quot;breadcrumb-item active&quot; aria-current=&quot;page&quot;&gt;Tambah Pelanggan&lt;/li&gt;
+                &lt;/ol&gt;
+            &lt;/nav&gt;
+            &lt;div class=&quot;d-flex justify-content-between w-100 flex-wrap&quot;&gt;
+                &lt;div class=&quot;mb-3 mb-lg-0&quot;&gt;
+                    &lt;h1 class=&quot;h4&quot;&gt;Tambah Pelanggan&lt;/h1&gt;
+                    &lt;p class=&quot;mb-0&quot;&gt;Form untuk menambahkan data pelanggan baru.&lt;/p&gt;
+                &lt;/div&gt;
+                &lt;div&gt;
+                    &lt;a href=&quot;&quot; class=&quot;btn btn-primary&quot;&gt;&lt;i class=&quot;far fa-question-circle me-1&quot;&gt;&lt;/i&gt; Kembali&lt;/a&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;div class=&quot;row&quot;&gt;
+            &lt;div class=&quot;col-12 mb-4&quot;&gt;
+                &lt;div class=&quot;card border-0 shadow components-section&quot;&gt;
+                    &lt;div class=&quot;card-body&quot;&gt;
+                        &lt;form action=&quot;&quot; method=&quot;POST&quot;&gt;
+                            &lt;div class=&quot;row mb-4&quot;&gt;
+                                &lt;div class=&quot;col-lg-4 col-sm-6&quot;&gt;
+                                    &lt;!-- First Name --&gt;
+                                    &lt;div class=&quot;mb-3&quot;&gt;
+                                        &lt;label for=&quot;first_name&quot; class=&quot;form-label&quot;&gt;First name&lt;/label&gt;
+                                        &lt;input type=&quot;text&quot; id=&quot;first_name&quot; class=&quot;form-control&quot; required&gt;
+                                    &lt;/div&gt;
+
+                                    &lt;!-- Last Name --&gt;
+                                    &lt;div class=&quot;mb-3&quot;&gt;
+                                        &lt;label for=&quot;last_name&quot; class=&quot;form-label&quot;&gt;Last name&lt;/label&gt;
+                                        &lt;input type=&quot;text&quot; id=&quot;last_name&quot; class=&quot;form-control&quot; required&gt;
+                                    &lt;/div&gt;
+                                &lt;/div&gt;
+
+                                &lt;div class=&quot;col-lg-4 col-sm-6&quot;&gt;
+                                    &lt;!-- Birthday --&gt;
+                                    &lt;div class=&quot;mb-3&quot;&gt;
+                                        &lt;label for=&quot;birthday&quot; class=&quot;form-label&quot;&gt;Birthday&lt;/label&gt;
+                                        &lt;input type=&quot;date&quot; id=&quot;birthday&quot; class=&quot;form-control&quot;&gt;
+                                    &lt;/div&gt;
+
+                                    &lt;!-- Gender --&gt;
+                                    &lt;div class=&quot;mb-3&quot;&gt;
+                                        &lt;label for=&quot;gender&quot; class=&quot;form-label&quot;&gt;Gender&lt;/label&gt;
+                                        &lt;select id=&quot;gender&quot; name=&quot;gender&quot; class=&quot;form-select&quot;&gt;
+                                            &lt;option value=&quot;&quot;&gt;-- Pilih --&lt;/option&gt;
+                                            &lt;option value=&quot;Male&quot;&gt;Male&lt;/option&gt;
+                                            &lt;option value=&quot;Female&quot;&gt;Female&lt;/option&gt;
+                                            &lt;option value=&quot;Other&quot;&gt;Other&lt;/option&gt;
+                                        &lt;/select&gt;
+                                    &lt;/div&gt;
+                                &lt;/div&gt;
+
+                                &lt;div class=&quot;col-lg-4 col-sm-12&quot;&gt;
+                                    &lt;!-- Email --&gt;
+                                    &lt;div class=&quot;mb-3&quot;&gt;
+                                        &lt;label for=&quot;email&quot; class=&quot;form-label&quot;&gt;Email&lt;/label&gt;
+                                        &lt;input type=&quot;text&quot; id=&quot;email&quot; class=&quot;form-control&quot; required&gt;
+                                    &lt;/div&gt;
+
+                                    &lt;!-- Phone --&gt;
+                                    &lt;div class=&quot;mb-3&quot;&gt;
+                                        &lt;label for=&quot;phone&quot; class=&quot;form-label&quot;&gt;Phone&lt;/label&gt;
+                                        &lt;input type=&quot;text&quot; id=&quot;phone&quot; class=&quot;form-control&quot;&gt;
+                                    &lt;/div&gt;
+
+                                    &lt;!-- Buttons --&gt;
+                                    &lt;div class=&quot;&quot;&gt;
+                                        &lt;button type=&quot;submit&quot; class=&quot;btn btn-primary&quot;&gt;Simpan&lt;/button&gt;
+                                        &lt;a href=&quot;{{ route(&#x27;pelanggan.index&#x27;) }}&quot; class=&quot;btn btn-outline-secondary ms-2&quot;&gt;Batal&lt;/a&gt;
+                                    &lt;/div&gt;
+                                &lt;/div&gt;
+                            &lt;/div&gt;
+                        &lt;/form&gt;
+                    &lt;/div&gt;
+
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;footer class=&quot;bg-white rounded shadow p-5 mb-4 mt-4&quot;&gt;
+            &lt;div class=&quot;row&quot;&gt;
+                &lt;div class=&quot;col-12 col-md-4 col-xl-6 mb-4 mb-md-0&quot;&gt;
+                    &lt;p class=&quot;mb-0 text-center text-lg-start&quot;&gt;© 2019-&lt;span class=&quot;current-year&quot;&gt;&lt;/span&gt; &lt;a class=&quot;text-primary fw-normal&quot; href=&quot;https://themesberg.com&quot; target=&quot;_blank&quot;&gt;Themesberg&lt;/a&gt;&lt;/p&gt;
+                &lt;/div&gt;
+                &lt;div class=&quot;col-12 col-md-8 col-xl-6 text-center text-lg-start&quot;&gt;
+                    &lt;!-- List --&gt;
+                    &lt;ul class=&quot;list-inline list-group-flush list-group-borderless text-md-end mb-0&quot;&gt;
+                        &lt;li class=&quot;list-inline-item px-0 px-sm-2&quot;&gt;
+                            &lt;a href=&quot;https://themesberg.com/about&quot;&gt;About&lt;/a&gt;
+                        &lt;/li&gt;
+                        &lt;li class=&quot;list-inline-item px-0 px-sm-2&quot;&gt;
+                            &lt;a href=&quot;https://themesberg.com/themes&quot;&gt;Themes&lt;/a&gt;
+                        &lt;/li&gt;
+                        &lt;li class=&quot;list-inline-item px-0 px-sm-2&quot;&gt;
+                            &lt;a href=&quot;https://themesberg.com/blog&quot;&gt;Blog&lt;/a&gt;
+                        &lt;/li&gt;
+                        &lt;li class=&quot;list-inline-item px-0 px-sm-2&quot;&gt;
+                            &lt;a href=&quot;https://themesberg.com/contact&quot;&gt;Contact&lt;/a&gt;
+                        &lt;/li&gt;
+                    &lt;/ul&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/footer&gt;
+    &lt;/main&gt;
+
+    &lt;!-- Core --&gt;
+    &lt;script src=&quot;{{ asset(&#x27;assets-admin/vendor/@popperjs/core/dist/umd/popper.min.js&#x27;) }}&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;{{ asset(&#x27;assets-admin/vendor/bootstrap/dist/js/bootstrap.min.js&#x27;) }}&quot;&gt;&lt;/script&gt;
+
+    &lt;!-- Volt JS --&gt;
+    &lt;script src=&quot;{{ asset(&#x27;assets-admin/js/volt.js&#x27;) }}&quot;&gt;&lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;
+</code></pre></div></details><hr id="0b954857-ba46-830c-b1c9-817542625955" dir="auto"/><p id="e1e54857-ba46-83fd-92b2-8155eff32ee1" class="" dir="auto">
+</p><aside class="block-color-gray_background callout" data-notion-callout="" data-notion-callout-icon="⚠️" data-notion-callout-background="gray_background" style="white-space:pre-wrap;display:flex" id="a5e54857-ba46-8379-aa93-816c9adbd632" dir="ltr"><div style="font-size:1.5em"><span class="icon" data-emoji="⚠️"></span></div><div style="width:100%"><p id="e7f54857-ba46-83d6-a96f-01bdb7c7c015" class="" dir="auto">Kode diatas masih belum lengkap, silahkan lengkapi dengan penyesuaian berikut:</p><ul id="72754857-ba46-839f-9d53-816e0ebeca34" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Pastikan <code>href</code> pada tombol yang ada sudah benar </li></ul><ul id="2b754857-ba46-83ea-a128-81c145d65e34" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Pastikan <code>action</code>  → <code>pelanggan.store</code></li></ul><ul id="93e54857-ba46-82eb-a48c-012aa46fb5b9" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Pastikan <code>form</code>  meneraplan <code>csrf</code> </li></ul><ul id="87154857-ba46-821f-8cd2-015e1fe46b70" class="bulleted-list" dir="auto"><li style="list-style-type:disc"> Pastikan <code>name</code> sesuai dengan kolom di tabel pelanggan </li></ul><ul id="c2554857-ba46-8374-af15-8105aaf0cc28" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Tambahkan blok <code>&lt;li&gt;</code> untuk menu “Pelanggan” yang mengarah ke <code>pelanggan.index</code> tepat  di bawah menu Dashbaord<figure id="56454857-ba46-8249-951e-01a2f6b7feef" data-notion-code-syntax="html"><pre class="code code-wrap" data-notion-code-syntax="html"><code class="language-html" style="white-space:pre-wrap;word-break:break-all">&lt;ul class=&quot;nav flex-column pt-3 pt-md-0&quot;&gt;
+		...
+		
+		&lt;li class=&quot;nav-item  active &quot;&gt;
+		    &lt;a href=&quot;{{ route(&#x27;dashboard&#x27;) }}&quot; class=&quot;nav-link&quot;&gt;
+		        ...
+		        &lt;span class=&quot;sidebar-text&quot;&gt;Dashboard&lt;/span&gt;
+		    &lt;/a&gt;
+		&lt;/li&gt;
+		
+		&lt;!-- Tambahkan blok kode ini --&gt;
+		&lt;li class=&quot;nav-item  active &quot;&gt;
+		    &lt;a href=&quot;&quot; class=&quot;nav-link&quot;&gt;
+		        &lt;span class=&quot;sidebar-icon&quot;&gt;
+		            &lt;svg class=&quot;icon icon-xs me-2&quot; data-slot=&quot;icon&quot; fill=&quot;none&quot; stroke-width=&quot;1.5&quot; stroke=&quot;currentColor&quot; viewBox=&quot;0 0 24 24&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; aria-hidden=&quot;true&quot;&gt;
+		                &lt;path stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot; d=&quot;M18 18.72a9.094 9.094 0 0 0 3.741-.479 3 3 0 0 0-4.682-2.72m.94 3.198.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0 1 12 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 0 1 6 18.719m12 0a5.971 5.971 0 0 0-.941-3.197m0 0A5.995 5.995 0 0 0 12 12.75a5.995 5.995 0 0 0-5.058 2.772m0 0a3 3 0 0 0-4.681 2.72 8.986 8.986 0 0 0 3.74.477m.94-3.197a5.971 5.971 0 0 0-.94 3.197M15 6.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm6 3a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Zm-13.5 0a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Z&quot;&gt;&lt;/path&gt;
+		            &lt;/svg&gt;
+		        &lt;/span&gt;
+		        &lt;span class=&quot;sidebar-text&quot;&gt;Pelanggan&lt;/span&gt;
+		    &lt;/a&gt;
+		&lt;/li&gt;
+		
+		...
+&lt;/ul&gt;</code></pre><figcaption>Jangan lupa sesuaikan href-nya!</figcaption></figure></li></ul></div></aside><p id="62e54857-ba46-821a-97bb-01971b9f74d6" class="" dir="auto">
+</p><p id="3d054857-ba46-8281-9749-013995e49fb7" class="" dir="auto">Hasil akhir yang diharapkan adalah sebagai berikut</p><figure id="ae054857-ba46-83ac-b7d7-015f443b6841" class="image" data-notion-image="image%209.png" dir="ltr"><a href="image%209.png"><img style="width:653.9904174804688px" src="image%209.png"/></a></figure><p id="c7354857-ba46-83b2-b987-011a3ae12450" class="" dir="auto">
+</p></div></details><details id="e9154857-ba46-820e-ba31-81f7f351165d" open="" class="toggle" dir="auto"><summary>3️⃣ Debug proses submit form ke function <code>store()</code></summary><div class="indented"><p id="30b54857-ba46-825d-98c4-0137b0f6cc30" class="" dir="auto">Jika form sesuai, coba lakukan debug dengan <code>dd($request-&gt;all())</code>, apakah data form berhasil di terima di <code>store()</code></p><p id="d6654857-ba46-8288-8e78-01dc3d3811cc" class="" dir="auto">
+</p><figure id="bdf54857-ba46-8397-8380-8156cc92fc7f" class="image" style="text-align:center" data-notion-image="image%2010.png" dir="ltr"><a href="image%2010.png"><img style="width:384px" src="image%2010.png"/></a></figure><p id="73654857-ba46-839d-b40e-016f6202ad63" class="" dir="auto">
+</p></div></details><details id="b5454857-ba46-82f6-943a-817d0b59e748" open="" class="toggle" dir="auto"><summary>4️⃣ Jika sudah berhasil, panggil model <code>Pelanggan::create()</code> untuk insert data. </summary><div class="indented"><p id="e7b54857-ba46-8376-bd72-81d8fce0248c" class="" dir="auto">Silahkan salin kode berikut pada function <code>store()</code> <em>(jangan lupa comment kode debug sebelumnya)</em></p><figure id="fc654857-ba46-83d6-b3a2-81c5053031f2" data-notion-code-syntax="php"><pre class="code code-wrap" data-notion-code-syntax="php"><code class="language-php" style="white-space:pre-wrap;word-break:break-all">use App\Models\Pelanggan; //Ini jangan lupa
+
+...
+
+public function store(Request $request){
+
+		//dd($request-&gt;all())
+		
+		$data[&#x27;first_name&#x27;] = $request-&gt;first_name;
+		$data[&#x27;last_name&#x27;] = $request-&gt;last_name;
+		$data[&#x27;birthday&#x27;] = $request-&gt;birthday;
+		$data[&#x27;gender&#x27;] = $request-&gt;gender;
+		$data[&#x27;email&#x27;] = $request-&gt;email;
+		$data[&#x27;phone&#x27;] = $request-&gt;phone;
+		
+		Pelanggan::create($data);
+		
+		return redirect()-&gt;route(&#x27;pelanggan.index&#x27;)-&gt;with(&#x27;success&#x27;,&#x27;Penambahan Data Berhasil!&#x27;);
+}</code></pre><figcaption>Jangan lupa import class Pelanggan! </figcaption></figure><p id="0b954857-ba46-8303-802a-81036ba6b960" class="" dir="auto">
+</p><aside class="block-color-red_background callout" data-notion-callout="" data-notion-callout-icon="💡" data-notion-callout-background="red_background" style="white-space:pre-wrap;display:flex" id="44d54857-ba46-828c-a04d-81d6649a7ac5" dir="ltr"><div style="font-size:1.5em"><span class="icon" data-emoji="💡"></span></div><div style="width:100%"><p id="46f54857-ba46-82ab-b1bf-8169b2471aa3" class="" dir="auto"> Pastikan menampilkan flash data pada halaman list pelanggan </p></div></aside><p id="8c054857-ba46-82c0-8a5f-8175cc230e34" class="" dir="auto">
+</p><p id="14554857-ba46-8385-af4c-819f37492c52" class="" dir="auto"><br/>Cek ke database apakah data berhasil di-inputkan</p><figure id="b8554857-ba46-83ee-ad55-01f6487a67df" class="image" data-notion-image="b9af088f-7435-4ce2-8888-def083fbdd2a.png" dir="ltr"><a href="b9af088f-7435-4ce2-8888-def083fbdd2a.png"><img style="width:707.984375px" src="b9af088f-7435-4ce2-8888-def083fbdd2a.png"/></a></figure><p id="31c54857-ba46-826e-9530-01dcb2b1f9a4" class="" dir="auto"><em>Jangan lupa git push!</em></p><p id="6f754857-ba46-830c-a4ee-8103a2d6aeee" class="" dir="auto">
+</p></div></details><p id="1c454857-ba46-8287-8364-81112370e286" class="" dir="auto">
+</p><hr id="7b654857-ba46-826f-9e83-81132e7e155d" dir="auto"/></div></details><details open="" class="" dir="auto"><summary style="font-weight:600;font-size:1.875em;line-height:1.3;margin:0"><h1 id="61a54857-ba46-82b3-9ece-81246d61f945" style="display:inline-block">📂 Read</h1></summary><div class="indented"><details id="e6254857-ba46-83bd-9ea5-818245149f6f" open="" class="toggle" dir="auto"><summary>1️⃣ Sesuaikan function  <code>index()</code> </summary><div class="indented"><p id="0fb54857-ba46-8312-b750-01bf8ca100c8" class="" dir="auto">Buat file <code>index.blade.php</code>  di <code>resources/views/admin/pelanggan</code>  </p><figure id="1a854857-ba46-827c-a82a-0187943b2ad8" class="image" data-notion-image="image%2011.png" dir="ltr"><a href="image%2011.png"><img style="width:240px" src="image%2011.png"/></a></figure><p id="45e54857-ba46-832c-8f8f-0198afac4423" class="" dir="auto">
+</p><p id="97354857-ba46-838a-87e2-8138ef69a7ce" class="" dir="auto">Pada  function <code>index()</code> , panggil model <code>Pelanggan::all()</code> dan tampilkan data tersebut di view <code>admin.pelanggan.index</code> </p><figure id="92c54857-ba46-836e-8408-810e98a570f9" data-notion-code-syntax="php"><pre class="code code-wrap" data-notion-code-syntax="php"><code class="language-php" style="white-space:pre-wrap;word-break:break-all">public function index(){
+		$data[&#x27;dataPelanggan&#x27;] = Pelanggan::all();
+		return view(&#x27;admin.pelanggan.index&#x27;,$data);
+}</code></pre><figcaption>Jangan lupa import class Pelanggan!</figcaption></figure><p id="e5454857-ba46-826c-bdf7-012ee71e98a1" class="" dir="auto"><code>Pelanggan::all()</code> → eloquent yang mengambil seluruh data yang belum dihapus</p><p id="f4f54857-ba46-829f-99e0-010501d50481" class="" dir="auto">
+</p></div></details><details id="3c154857-ba46-831a-8fcc-81257e73cc4a" open="" class="toggle" dir="auto"><summary>2️⃣ Sesuaikan <code>index.blade.php</code></summary><div class="indented"><p id="a0b54857-ba46-83ee-9b94-81e41d888f00" class="" dir="auto">salin SELURUH kode berikut:</p><details id="9f754857-ba46-82b3-bdab-01d4a5afdaea" open="" class="block-color-orange toggle" data-notion-highlight="orange" dir="auto"><summary><strong>Lihat Kode</strong></summary><div class="indented"><pre id="ed754857-ba46-8308-b006-819ca35e491a" class="code code-wrap"><code style="white-space:pre-wrap;word-break:break-all">&lt;!--
+
+=========================================================
+* Volt Pro - Premium Bootstrap 5 Dashboard
+=========================================================
+
+* Product Page: https://themesberg.com/product/admin-dashboard/volt-bootstrap-5-dashboard
+* Copyright 2021 Themesberg (https://www.themesberg.com)
+* License (https://themesberg.com/licensing)
+
+* Designed and coded by https://themesberg.com
+
+=========================================================
+
+* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. Please contact us to request a removal.
+
+--&gt;
+&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;
+    &lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot; /&gt;
+    &lt;!-- Primary Meta Tags --&gt;
+    &lt;title&gt;Volt - Free Bootstrap 5 Dashboard&lt;/title&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1, shrink-to-fit=no&quot;&gt;
+    &lt;meta name=&quot;title&quot; content=&quot;Volt - Free Bootstrap 5 Dashboard&quot;&gt;
+    &lt;meta name=&quot;author&quot; content=&quot;Themesberg&quot;&gt;
+
+    &lt;!-- Favicon --&gt;
+    &lt;link rel=&quot;apple-touch-icon&quot; sizes=&quot;120x120&quot; href=&quot;{{ asset(&#x27;assets-admin/img/favicon/apple-touch-icon.png&#x27;) }}&quot;&gt;
+    &lt;link rel=&quot;icon&quot; type=&quot;image/png&quot; sizes=&quot;32x32&quot; href=&quot;{{ asset(&#x27;assets-admin/img/favicon/favicon-32x32.png&#x27;) }}&quot;&gt;
+    &lt;link rel=&quot;icon&quot; type=&quot;image/png&quot; sizes=&quot;16x16&quot; href=&quot;{{ asset(&#x27;assets-admin/img/favicon/favicon-16x16.png&#x27;) }}&quot;&gt;
+    &lt;link rel=&quot;manifest&quot; href=&quot;{{ asset(&#x27;assets-admin/img/favicon/site.webmanifest&#x27;) }}&quot;&gt;
+    &lt;link rel=&quot;mask-icon&quot; href=&quot;{{ asset(&#x27;assets-admin/img/favicon/safari-pinned-tab.svg&#x27;) }}&quot; color=&quot;#ffffff&quot;&gt;
+    &lt;meta name=&quot;msapplication-TileColor&quot; content=&quot;#ffffff&quot;&gt;
+    &lt;meta name=&quot;theme-color&quot; content=&quot;#ffffff&quot;&gt;
+
+    &lt;!-- Volt CSS --&gt;
+    &lt;link type=&quot;text/css&quot; href=&quot;{{ asset(&#x27;assets-admin/css/volt.css&#x27;) }}&quot; rel=&quot;stylesheet&quot;&gt;
+
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;nav class=&quot;navbar navbar-dark navbar-theme-primary px-4 col-12 d-lg-none&quot;&gt;
+        &lt;a class=&quot;navbar-brand me-lg-5&quot; href=&quot;../../index.html&quot;&gt;
+            &lt;img class=&quot;navbar-brand-dark&quot; src=&quot;{{ asset(&#x27;assets-admin/img/brand/light.svg&#x27;) }}&quot; alt=&quot;Volt logo&quot; /&gt; &lt;img class=&quot;navbar-brand-light&quot; src=&quot;{{ asset(&#x27;&#x27;) }}assets-admin/img/brand/dark.svg&quot; alt=&quot;Volt logo&quot; /&gt;
+        &lt;/a&gt;
+        &lt;div class=&quot;d-flex align-items-center&quot;&gt;
+            &lt;button class=&quot;navbar-toggler d-lg-none collapsed&quot; type=&quot;button&quot; data-bs-toggle=&quot;collapse&quot; data-bs-target=&quot;#sidebarMenu&quot; aria-controls=&quot;sidebarMenu&quot; aria-expanded=&quot;false&quot; aria-label=&quot;Toggle navigation&quot;&gt;
+                &lt;span class=&quot;navbar-toggler-icon&quot;&gt;&lt;/span&gt;
+            &lt;/button&gt;
+        &lt;/div&gt;
+    &lt;/nav&gt;
+
+    &lt;nav id=&quot;sidebarMenu&quot; class=&quot;sidebar d-lg-block bg-gray-800 text-white collapse&quot; data-simplebar&gt;
+        &lt;div class=&quot;sidebar-inner px-4 pt-3&quot;&gt;
+            &lt;div class=&quot;user-card d-flex d-md-none align-items-center justify-content-between justify-content-md-center pb-4&quot;&gt;
+                &lt;div class=&quot;d-flex align-items-center&quot;&gt;
+                    &lt;div class=&quot;avatar-lg me-4&quot;&gt;
+                        &lt;img src=&quot;{{ asset(&#x27;assets-admin/img/team/profile-picture-3.jpg&#x27;) }}&quot; class=&quot;card-img-top rounded-circle border-white&quot; alt=&quot;Bonnie Green&quot;&gt;
+                    &lt;/div&gt;
+                    &lt;div class=&quot;d-block&quot;&gt;
+                        &lt;h2 class=&quot;h5 mb-3&quot;&gt;Hi, Jane&lt;/h2&gt;
+                        &lt;a href=&quot;../../pages/examples/sign-in.html&quot; class=&quot;btn btn-secondary btn-sm d-inline-flex align-items-center&quot;&gt;
+                            &lt;svg class=&quot;icon icon-xxs me-1&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; viewBox=&quot;0 0 24 24&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;&gt;
+                                &lt;path stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot; stroke-width=&quot;2&quot; d=&quot;M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1&quot;&gt;
+                                &lt;/path&gt;
+                            &lt;/svg&gt;
+                            Sign Out
+                        &lt;/a&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+                &lt;div class=&quot;collapse-close d-md-none&quot;&gt;
+                    &lt;a href=&quot;#sidebarMenu&quot; data-bs-toggle=&quot;collapse&quot; data-bs-target=&quot;#sidebarMenu&quot; aria-controls=&quot;sidebarMenu&quot; aria-expanded=&quot;true&quot; aria-label=&quot;Toggle navigation&quot;&gt;
+                        &lt;svg class=&quot;icon icon-xs&quot; fill=&quot;currentColor&quot; viewBox=&quot;0 0 20 20&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;&gt;
+                            &lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z&quot; clip-rule=&quot;evenodd&quot;&gt;&lt;/path&gt;
+                        &lt;/svg&gt;
+                    &lt;/a&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;ul class=&quot;nav flex-column pt-3 pt-md-0&quot;&gt;
+                &lt;li class=&quot;nav-item&quot;&gt;
+                    &lt;a href=&quot;../../index.html&quot; class=&quot;nav-link d-flex align-items-center&quot;&gt;
+                        &lt;span class=&quot;sidebar-icon&quot;&gt;
+                            &lt;img src=&quot;{{ asset(&#x27;assets-admin/img/brand/light.svg&#x27;) }}&quot; height=&quot;20&quot; width=&quot;20&quot; alt=&quot;Volt Logo&quot;&gt;
+                        &lt;/span&gt;
+                        &lt;span class=&quot;mt-1 ms-1 sidebar-text&quot;&gt;Volt Overview&lt;/span&gt;
+                    &lt;/a&gt;
+                &lt;/li&gt;
+                &lt;li class=&quot;nav-item  active &quot;&gt;
+                    &lt;a href=&quot;{{ route(&#x27;dashboard&#x27;) }}&quot; class=&quot;nav-link&quot;&gt;
+                        &lt;span class=&quot;sidebar-icon&quot;&gt;
+                            &lt;svg class=&quot;icon icon-xs me-2&quot; fill=&quot;currentColor&quot; viewBox=&quot;0 0 20 20&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;&gt;
+                                &lt;path d=&quot;M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z&quot;&gt;&lt;/path&gt;
+                                &lt;path d=&quot;M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z&quot;&gt;&lt;/path&gt;
+                            &lt;/svg&gt;
+                        &lt;/span&gt;
+                        &lt;span class=&quot;sidebar-text&quot;&gt;Dashboard&lt;/span&gt;
+                    &lt;/a&gt;
+                &lt;/li&gt;
+                &lt;!-- Tambahkan blok kode ini --&gt;
+                &lt;li class=&quot;nav-item  active &quot;&gt;
+                    &lt;a href=&quot;&quot; class=&quot;nav-link&quot;&gt;
+                        &lt;span class=&quot;sidebar-icon&quot;&gt;
+                            &lt;svg class=&quot;icon icon-xs me-2&quot; data-slot=&quot;icon&quot; fill=&quot;none&quot; stroke-width=&quot;1.5&quot; stroke=&quot;currentColor&quot; viewBox=&quot;0 0 24 24&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; aria-hidden=&quot;true&quot;&gt;
+                                &lt;path stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot; d=&quot;M18 18.72a9.094 9.094 0 0 0 3.741-.479 3 3 0 0 0-4.682-2.72m.94 3.198.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0 1 12 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 0 1 6 18.719m12 0a5.971 5.971 0 0 0-.941-3.197m0 0A5.995 5.995 0 0 0 12 12.75a5.995 5.995 0 0 0-5.058 2.772m0 0a3 3 0 0 0-4.681 2.72 8.986 8.986 0 0 0 3.74.477m.94-3.197a5.971 5.971 0 0 0-.94 3.197M15 6.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm6 3a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Zm-13.5 0a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Z&quot;&gt;&lt;/path&gt;
+                            &lt;/svg&gt;
+                        &lt;/span&gt;
+                        &lt;span class=&quot;sidebar-text&quot;&gt;Pelanggan&lt;/span&gt;
+                    &lt;/a&gt;
+                &lt;/li&gt;
+
+                &lt;li role=&quot;separator&quot; class=&quot;dropdown-divider mt-4 mb-3 border-gray-700&quot;&gt;&lt;/li&gt;
+                &lt;li class=&quot;nav-item&quot;&gt;
+                    &lt;a href=&quot;https://themesberg.com/docs/volt-bootstrap-5-dashboard/getting-started/quick-start/&quot; target=&quot;_blank&quot; class=&quot;nav-link d-flex align-items-center&quot;&gt;
+                        &lt;span class=&quot;sidebar-icon&quot;&gt;
+                            &lt;svg class=&quot;icon icon-xs me-2&quot; fill=&quot;currentColor&quot; viewBox=&quot;0 0 20 20&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;&gt;
+                                &lt;path fill-rule=&quot;evenodd&quot; d=&quot;M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z&quot; clip-rule=&quot;evenodd&quot;&gt;&lt;/path&gt;
+                            &lt;/svg&gt;
+                        &lt;/span&gt;
+                        &lt;span class=&quot;sidebar-text&quot;&gt;Documentation &lt;span class=&quot;badge badge-sm bg-secondary ms-1 text-gray-800&quot;&gt;v1.4&lt;/span&gt;&lt;/span&gt;
+                    &lt;/a&gt;
+                &lt;/li&gt;
+                &lt;li class=&quot;nav-item&quot;&gt;
+                    &lt;a href=&quot;../../pages/upgrade-to-pro.html&quot; class=&quot;btn btn-secondary d-flex align-items-center justify-content-center btn-upgrade-pro&quot;&gt;
+                        &lt;span class=&quot;sidebar-icon d-inline-flex align-items-center justify-content-center&quot;&gt;
+                            &lt;svg class=&quot;icon icon-xs me-2&quot; fill=&quot;currentColor&quot; viewBox=&quot;0 0 20 20&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;&gt;
+                                &lt;path fill-rule=&quot;evenodd&quot; d=&quot;M12.395 2.553a1 1 0 00-1.45-.385c-.345.23-.614.558-.822.88-.214.33-.403.713-.57 1.116-.334.804-.614 1.768-.84 2.734a31.365 31.365 0 00-.613 3.58 2.64 2.64 0 01-.945-1.067c-.328-.68-.398-1.534-.398-2.654A1 1 0 005.05 6.05 6.981 6.981 0 003 11a7 7 0 1011.95-4.95c-.592-.591-.98-.985-1.348-1.467-.363-.476-.724-1.063-1.207-2.03zM12.12 15.12A3 3 0 017 13s.879.5 2.5.5c0-1 .5-4 1.25-4.5.5 1 .786 1.293 1.371 1.879A2.99 2.99 0 0113 13a2.99 2.99 0 01-.879 2.121z&quot; clip-rule=&quot;evenodd&quot;&gt;&lt;/path&gt;
+                            &lt;/svg&gt;
+                        &lt;/span&gt;
+                        &lt;span&gt;Upgrade to Pro&lt;/span&gt;
+                    &lt;/a&gt;
+                &lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/div&gt;
+    &lt;/nav&gt;
+
+    &lt;main class=&quot;content&quot;&gt;
+
+        &lt;nav class=&quot;navbar navbar-top navbar-expand navbar-dashboard navbar-dark ps-0 pe-2 pb-0&quot;&gt;
+            &lt;div class=&quot;container-fluid px-0&quot;&gt;
+                &lt;div class=&quot;d-flex justify-content-between w-100&quot; id=&quot;navbarSupportedContent&quot;&gt;
+                    &lt;div class=&quot;d-flex align-items-center&quot;&gt;
+                        &lt;!-- Search form --&gt;
+                        &lt;form class=&quot;navbar-search form-inline&quot; id=&quot;navbar-search-main&quot;&gt;
+                            &lt;div class=&quot;input-group input-group-merge search-bar&quot;&gt;
+                                &lt;span class=&quot;input-group-text&quot; id=&quot;topbar-addon&quot;&gt;
+                                    &lt;svg class=&quot;icon icon-xs&quot; x-description=&quot;Heroicon name: solid/search&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; viewBox=&quot;0 0 20 20&quot; fill=&quot;currentColor&quot; aria-hidden=&quot;true&quot;&gt;
+                                        &lt;path fill-rule=&quot;evenodd&quot; d=&quot;M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z&quot; clip-rule=&quot;evenodd&quot;&gt;&lt;/path&gt;
+                                    &lt;/svg&gt;
+                                &lt;/span&gt;
+                                &lt;input type=&quot;text&quot; class=&quot;form-control&quot; id=&quot;topbarInputIconLeft&quot; placeholder=&quot;Search&quot; aria-label=&quot;Search&quot; aria-describedby=&quot;topbar-addon&quot;&gt;
+                            &lt;/div&gt;
+                        &lt;/form&gt;
+                        &lt;!-- / Search form --&gt;
+                    &lt;/div&gt;
+                    &lt;!-- Navbar links --&gt;
+                    &lt;ul class=&quot;navbar-nav align-items-center&quot;&gt;
+                        &lt;li class=&quot;nav-item dropdown&quot;&gt;
+                            &lt;a class=&quot;nav-link text-dark notification-bell unread dropdown-toggle&quot; data-unread-notifications=&quot;true&quot; href=&quot;#&quot; role=&quot;button&quot; data-bs-toggle=&quot;dropdown&quot; data-bs-display=&quot;static&quot; aria-expanded=&quot;false&quot;&gt;
+                                &lt;svg class=&quot;icon icon-sm text-gray-900&quot; fill=&quot;currentColor&quot; viewBox=&quot;0 0 20 20&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;&gt;
+                                    &lt;path d=&quot;M10 2a6 6 0 00-6 6v3.586l-.707.707A1 1 0 004 14h12a1 1 0 00.707-1.707L16 11.586V8a6 6 0 00-6-6zM10 18a3 3 0 01-3-3h6a3 3 0 01-3 3z&quot;&gt;&lt;/path&gt;
+                                &lt;/svg&gt;
+                            &lt;/a&gt;
+                            &lt;div class=&quot;dropdown-menu dropdown-menu-lg dropdown-menu-center mt-2 py-0&quot;&gt;
+                                &lt;div class=&quot;list-group list-group-flush&quot;&gt;
+                                    &lt;a href=&quot;#&quot; class=&quot;text-center text-primary fw-bold border-bottom border-light py-3&quot;&gt;Notifications&lt;/a&gt;
+                                    &lt;a href=&quot;#&quot; class=&quot;list-group-item list-group-item-action border-bottom&quot;&gt;
+                                        &lt;div class=&quot;row align-items-center&quot;&gt;
+                                            &lt;div class=&quot;col-auto&quot;&gt;
+                                                &lt;!-- Avatar --&gt;
+                                                &lt;img alt=&quot;Image placeholder&quot; src=&quot;{{ asset(&#x27;assets-admin/img/team/profile-picture-1.jpg&#x27;) }}&quot; class=&quot;avatar-md rounded&quot;&gt;
+                                            &lt;/div&gt;
+                                            &lt;div class=&quot;col ps-0 ms-2&quot;&gt;
+                                                &lt;div class=&quot;d-flex justify-content-between align-items-center&quot;&gt;
+                                                    &lt;div&gt;
+                                                        &lt;h4 class=&quot;h6 mb-0 text-small&quot;&gt;Jose Leos&lt;/h4&gt;
+                                                    &lt;/div&gt;
+                                                    &lt;div class=&quot;text-end&quot;&gt;
+                                                        &lt;small class=&quot;text-danger&quot;&gt;a few moments ago&lt;/small&gt;
+                                                    &lt;/div&gt;
+                                                &lt;/div&gt;
+                                                &lt;p class=&quot;font-small mt-1 mb-0&quot;&gt;Added you to an event &quot;Project stand-up&quot; tomorrow at 12:30 AM.&lt;/p&gt;
+                                            &lt;/div&gt;
+                                        &lt;/div&gt;
+                                    &lt;/a&gt;
+                                    &lt;a href=&quot;#&quot; class=&quot;list-group-item list-group-item-action border-bottom&quot;&gt;
+                                        &lt;div class=&quot;row align-items-center&quot;&gt;
+                                            &lt;div class=&quot;col-auto&quot;&gt;
+                                                &lt;!-- Avatar --&gt;
+                                                &lt;img alt=&quot;Image placeholder&quot; src=&quot;{{ asset(&#x27;assets-admin/img/team/profile-picture-2.jpg&#x27;) }}&quot; class=&quot;avatar-md rounded&quot;&gt;
+                                            &lt;/div&gt;
+                                            &lt;div class=&quot;col ps-0 ms-2&quot;&gt;
+                                                &lt;div class=&quot;d-flex justify-content-between align-items-center&quot;&gt;
+                                                    &lt;div&gt;
+                                                        &lt;h4 class=&quot;h6 mb-0 text-small&quot;&gt;Neil Sims&lt;/h4&gt;
+                                                    &lt;/div&gt;
+                                                    &lt;div class=&quot;text-end&quot;&gt;
+                                                        &lt;small class=&quot;text-danger&quot;&gt;2 hrs ago&lt;/small&gt;
+                                                    &lt;/div&gt;
+                                                &lt;/div&gt;
+                                                &lt;p class=&quot;font-small mt-1 mb-0&quot;&gt;You&#x27;ve been assigned a task for &quot;Awesome new project&quot;.&lt;/p&gt;
+                                            &lt;/div&gt;
+                                        &lt;/div&gt;
+                                    &lt;/a&gt;
+                                    &lt;a href=&quot;#&quot; class=&quot;list-group-item list-group-item-action border-bottom&quot;&gt;
+                                        &lt;div class=&quot;row align-items-center&quot;&gt;
+                                            &lt;div class=&quot;col-auto&quot;&gt;
+                                                &lt;!-- Avatar --&gt;
+                                                &lt;img alt=&quot;Image placeholder&quot; src=&quot;{{ asset(&#x27;assets-admin/img/team/profile-picture-3.jpg&#x27;) }}&quot; class=&quot;avatar-md rounded&quot;&gt;
+                                            &lt;/div&gt;
+                                            &lt;div class=&quot;col ps-0 m-2&quot;&gt;
+                                                &lt;div class=&quot;d-flex justify-content-between align-items-center&quot;&gt;
+                                                    &lt;div&gt;
+                                                        &lt;h4 class=&quot;h6 mb-0 text-small&quot;&gt;Roberta Casas&lt;/h4&gt;
+                                                    &lt;/div&gt;
+                                                    &lt;div class=&quot;text-end&quot;&gt;
+                                                        &lt;small&gt;5 hrs ago&lt;/small&gt;
+                                                    &lt;/div&gt;
+                                                &lt;/div&gt;
+                                                &lt;p class=&quot;font-small mt-1 mb-0&quot;&gt;Tagged you in a document called &quot;Financial plans&quot;,&lt;/p&gt;
+                                            &lt;/div&gt;
+                                        &lt;/div&gt;
+                                    &lt;/a&gt;
+                                    &lt;a href=&quot;#&quot; class=&quot;dropdown-item text-center fw-bold rounded-bottom py-3&quot;&gt;
+                                        &lt;svg class=&quot;icon icon-xxs text-gray-400 me-1&quot; fill=&quot;currentColor&quot; viewBox=&quot;0 0 20 20&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;&gt;
+                                            &lt;path d=&quot;M10 12a2 2 0 100-4 2 2 0 000 4z&quot;&gt;&lt;/path&gt;
+                                            &lt;path fill-rule=&quot;evenodd&quot; d=&quot;M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z&quot; clip-rule=&quot;evenodd&quot;&gt;&lt;/path&gt;
+                                        &lt;/svg&gt;
+                                        View all
+                                    &lt;/a&gt;
+                                &lt;/div&gt;
+                            &lt;/div&gt;
+                        &lt;/li&gt;
+                        &lt;li class=&quot;nav-item dropdown ms-lg-3&quot;&gt;
+                            &lt;a class=&quot;nav-link dropdown-toggle pt-1 px-0&quot; href=&quot;#&quot; role=&quot;button&quot; data-bs-toggle=&quot;dropdown&quot; aria-expanded=&quot;false&quot;&gt;
+                                &lt;div class=&quot;media d-flex align-items-center&quot;&gt;
+                                    &lt;img class=&quot;avatar rounded-circle&quot; alt=&quot;Image placeholder&quot; src=&quot;{{ asset(&#x27;assets-admin/img/team/profile-picture-3.jpg&#x27;) }}&quot;&gt;
+                                    &lt;div class=&quot;media-body ms-2 text-dark align-items-center d-none d-lg-block&quot;&gt;
+                                        &lt;span class=&quot;mb-0 font-small fw-bold text-gray-900&quot;&gt;Bonnie Green&lt;/span&gt;
+                                    &lt;/div&gt;
+                                &lt;/div&gt;
+                            &lt;/a&gt;
+                            &lt;div class=&quot;dropdown-menu dashboard-dropdown dropdown-menu-end mt-2 py-1&quot;&gt;
+                                &lt;a class=&quot;dropdown-item d-flex align-items-center&quot; href=&quot;#&quot;&gt;
+                                    &lt;svg class=&quot;dropdown-icon text-gray-400 me-2&quot; fill=&quot;currentColor&quot; viewBox=&quot;0 0 20 20&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;&gt;
+                                        &lt;path fill-rule=&quot;evenodd&quot; d=&quot;M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-6-3a2 2 0 11-4 0 2 2 0 014 0zm-2 4a5 5 0 00-4.546 2.916A5.986 5.986 0 0010 16a5.986 5.986 0 004.546-2.084A5 5 0 0010 11z&quot; clip-rule=&quot;evenodd&quot;&gt;&lt;/path&gt;
+                                    &lt;/svg&gt;
+                                    My Profile
+                                &lt;/a&gt;
+                                &lt;a class=&quot;dropdown-item d-flex align-items-center&quot; href=&quot;#&quot;&gt;
+                                    &lt;svg class=&quot;dropdown-icon text-gray-400 me-2&quot; fill=&quot;currentColor&quot; viewBox=&quot;0 0 20 20&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;&gt;
+                                        &lt;path fill-rule=&quot;evenodd&quot; d=&quot;M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z&quot; clip-rule=&quot;evenodd&quot;&gt;&lt;/path&gt;
+                                    &lt;/svg&gt;
+                                    Settings
+                                &lt;/a&gt;
+                                &lt;div role=&quot;separator&quot; class=&quot;dropdown-divider my-1&quot;&gt;&lt;/div&gt;
+                                &lt;a class=&quot;dropdown-item d-flex align-items-center&quot; href=&quot;#&quot;&gt;
+                                    &lt;svg class=&quot;dropdown-icon text-danger me-2&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; viewBox=&quot;0 0 24 24&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;&gt;
+                                        &lt;path stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot; stroke-width=&quot;2&quot; d=&quot;M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1&quot;&gt;&lt;/path&gt;
+                                    &lt;/svg&gt;
+                                    Logout
+                                &lt;/a&gt;
+                            &lt;/div&gt;
+                        &lt;/li&gt;
+                    &lt;/ul&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/nav&gt;
+
+        &lt;div class=&quot;py-4&quot;&gt;
+            &lt;nav aria-label=&quot;breadcrumb&quot; class=&quot;d-none d-md-inline-block&quot;&gt;
+                &lt;ol class=&quot;breadcrumb breadcrumb-dark breadcrumb-transparent&quot;&gt;
+                    &lt;li class=&quot;breadcrumb-item&quot;&gt;
+                        &lt;a href=&quot;#&quot;&gt;
+                            &lt;svg class=&quot;icon icon-xxs&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; viewBox=&quot;0 0 24 24&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;&gt;
+                                &lt;path stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot; stroke-width=&quot;2&quot; d=&quot;M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6&quot;&gt;&lt;/path&gt;
+                            &lt;/svg&gt;
+                        &lt;/a&gt;
+                    &lt;/li&gt;
+                    &lt;li class=&quot;breadcrumb-item&quot;&gt;&lt;a href=&quot;#&quot;&gt;Pelanggan&lt;/a&gt;&lt;/li&gt;
+                &lt;/ol&gt;
+            &lt;/nav&gt;
+            &lt;div class=&quot;d-flex justify-content-between w-100 flex-wrap&quot;&gt;
+                &lt;div class=&quot;mb-3 mb-lg-0&quot;&gt;
+                    &lt;h1 class=&quot;h4&quot;&gt;Data Pelanggan&lt;/h1&gt;
+                    &lt;p class=&quot;mb-0&quot;&gt;List data seluruh pelanggan&lt;/p&gt;
+                &lt;/div&gt;
+                &lt;div&gt;
+                    &lt;a href=&quot;&quot; class=&quot;btn btn-success text-white&quot;&gt;&lt;i class=&quot;far fa-question-circle me-1&quot;&gt;&lt;/i&gt; Tambah Pelanggan&lt;/a&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;div class=&quot;row&quot;&gt;
+            &lt;div class=&quot;col-12 mb-4&quot;&gt;
+                &lt;div class=&quot;card border-0 shadow mb-4&quot;&gt;
+                    &lt;div class=&quot;card-body&quot;&gt;
+                        &lt;div class=&quot;table-responsive&quot;&gt;
+                            &lt;table id=&quot;table-pelanggan&quot; class=&quot;table table-centered table-nowrap mb-0 rounded&quot;&gt;
+                                &lt;thead class=&quot;thead-light&quot;&gt;
+                                    &lt;tr&gt;
+                                        &lt;th class=&quot;border-0&quot;&gt;First Name&lt;/th&gt;
+                                        &lt;th class=&quot;border-0&quot;&gt;Last Name&lt;/th&gt;
+                                        &lt;th class=&quot;border-0&quot;&gt;Birthday&lt;/th&gt;
+                                        &lt;th class=&quot;border-0&quot;&gt;Gender&lt;/th&gt;
+                                        &lt;th class=&quot;border-0&quot;&gt;Email&lt;/th&gt;
+                                        &lt;th class=&quot;border-0&quot;&gt;Phone&lt;/th&gt;
+                                        &lt;th class=&quot;border-0 rounded-end&quot;&gt;Action&lt;/th&gt;
+                                    &lt;/tr&gt;
+                                &lt;/thead&gt;
+                                &lt;tbody&gt;
+
+
+                                &lt;/tbody&gt;
+                            &lt;/table&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;footer class=&quot;bg-white rounded shadow p-5 mb-4 mt-4&quot;&gt;
+            &lt;div class=&quot;row&quot;&gt;
+                &lt;div class=&quot;col-12 col-md-4 col-xl-6 mb-4 mb-md-0&quot;&gt;
+                    &lt;p class=&quot;mb-0 text-center text-lg-start&quot;&gt;© 2019-&lt;span class=&quot;current-year&quot;&gt;&lt;/span&gt; &lt;a class=&quot;text-primary fw-normal&quot; href=&quot;https://themesberg.com&quot; target=&quot;_blank&quot;&gt;Themesberg&lt;/a&gt;&lt;/p&gt;
+                &lt;/div&gt;
+                &lt;div class=&quot;col-12 col-md-8 col-xl-6 text-center text-lg-start&quot;&gt;
+                    &lt;!-- List --&gt;
+                    &lt;ul class=&quot;list-inline list-group-flush list-group-borderless text-md-end mb-0&quot;&gt;
+                        &lt;li class=&quot;list-inline-item px-0 px-sm-2&quot;&gt;
+                            &lt;a href=&quot;https://themesberg.com/about&quot;&gt;About&lt;/a&gt;
+                        &lt;/li&gt;
+                        &lt;li class=&quot;list-inline-item px-0 px-sm-2&quot;&gt;
+                            &lt;a href=&quot;https://themesberg.com/themes&quot;&gt;Themes&lt;/a&gt;
+                        &lt;/li&gt;
+                        &lt;li class=&quot;list-inline-item px-0 px-sm-2&quot;&gt;
+                            &lt;a href=&quot;https://themesberg.com/blog&quot;&gt;Blog&lt;/a&gt;
+                        &lt;/li&gt;
+                        &lt;li class=&quot;list-inline-item px-0 px-sm-2&quot;&gt;
+                            &lt;a href=&quot;https://themesberg.com/contact&quot;&gt;Contact&lt;/a&gt;
+                        &lt;/li&gt;
+                    &lt;/ul&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/footer&gt;
+    &lt;/main&gt;
+
+    &lt;!-- Core --&gt;
+    &lt;script src=&quot;{{ asset(&#x27;assets-admin/vendor/@popperjs/core/dist/umd/popper.min.js&#x27;) }}&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;{{ asset(&#x27;assets-admin/vendor/bootstrap/dist/js/bootstrap.min.js&#x27;) }}&quot;&gt;&lt;/script&gt;
+
+    &lt;!-- Volt JS --&gt;
+    &lt;script src=&quot;{{ asset(&#x27;assets-admin/js/volt.js&#x27;) }}&quot;&gt;&lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;
+</code></pre></div></details><hr id="51b54857-ba46-8370-ac10-014f7a9a6280" dir="auto"/><p id="5ce54857-ba46-8300-bd87-0157c2a5dd7c" class="" dir="auto">
+</p><p id="bed54857-ba46-8274-8172-013c9cbb2ef8" class="" dir="auto">Kode diatas masih belum lengkap, silahkan lengkapi dengan penyesuaian berikut:</p><ul id="de454857-ba46-8304-a60e-813389f289ad" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Pastikan <code>href</code> pada tombol yang ada sudah benar </li></ul><ul id="3fc54857-ba46-8236-9785-81fcc37d6533" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Tambahkan kode berikut didalam tag <code>&lt;tbody&gt;</code> <figure id="ee654857-ba46-8268-bb3e-01f8f69cb820" data-notion-code-syntax="html"><pre class="code code-wrap" data-notion-code-syntax="html"><code class="language-html" style="white-space:pre-wrap;word-break:break-all">&lt;tbody&gt;
+    @foreach($dataPelanggan as $item)
+        &lt;tr&gt;
+            &lt;td&gt;{{ $item-&gt;firstname }}&lt;/td&gt;
+            &lt;td&gt;{{ $item-&gt;last_name }}&lt;/td&gt;
+            &lt;td&gt;{{ $item-&gt;birhday }}&lt;/td&gt;
+            &lt;td&gt;{{ $item-&gt;gender }}&lt;/td&gt;
+            &lt;td&gt;{{ $item-&gt;email }}&lt;/td&gt;
+            &lt;td&gt;{{ $item-&gt;phone }}&lt;/td&gt;
+            &lt;td&gt;Tombol Edit &amp; Tombol Hapus&lt;/td&gt;
+        &lt;/tr&gt;
+    @endforeach
+&lt;/tbody&gt;</code></pre><figcaption>Perhatikan baik baik! Jika ada penulisan yang salah silahkan diperbaiki</figcaption></figure></li></ul><p id="40754857-ba46-8319-b5b5-81e6cd77ea42" class="" dir="auto">
+</p><p id="af554857-ba46-8291-bda3-01eda1430375" class="" dir="auto">Silahkan tes Tambah Pelanggan, maka hasil akhir untuk <code>index.blade.php</code> sebegai berikut:</p><figure id="cb854857-ba46-8318-9984-0194dd0c78cf" class="image" data-notion-image="image%2012.png" dir="ltr"><a href="image%2012.png"><img style="width:653.9904174804688px" src="image%2012.png"/></a></figure><p id="51254857-ba46-8298-8cd6-81935f3a124e" class="" dir="auto">
+</p><p id="46854857-ba46-8251-a8cd-81b71db479a6" class="" dir="auto"><em>Jangan lupa git push!</em></p></div></details><p id="79954857-ba46-83d5-bf9b-812674089a62" class="" dir="auto">
+</p><hr id="54354857-ba46-8365-8620-81a7b58ce6b8" dir="auto"/></div></details><details open="" class="" dir="auto"><summary style="font-weight:600;font-size:1.875em;line-height:1.3;margin:0"><h1 id="60e54857-ba46-83ee-88f3-01d79d35bcee" style="display:inline-block">📂 Update</h1></summary><div class="indented"><p id="20254857-ba46-820c-a121-0121351ca5cd" class="" dir="auto">Aksi <code>update</code> dilakukan dengan berpindah ke halaman <code>edit</code> dengan membawa <em>primary key</em> data yang akan di perbaharui sebagai parameter.</p><details id="e1854857-ba46-83f2-bfb6-012d262654f2" open="" class="toggle" dir="auto"><summary>1️⃣ Tambahkan  tombol “Edit” pada kolom “Action”</summary><div class="indented"><figure id="bc854857-ba46-836e-948e-01c791af5109" data-notion-code-syntax="html"><pre class="code code-wrap" data-notion-code-syntax="html"><code class="language-html" style="white-space:pre-wrap;word-break:break-all">&lt;a href=&quot;&quot; class=&quot;btn btn-info btn-sm&quot;&gt;
+    &lt;svg  class=&quot;icon icon-xs me-2&quot; data-slot=&quot;icon&quot; fill=&quot;none&quot; stroke-width=&quot;1.5&quot; stroke=&quot;currentColor&quot; viewBox=&quot;0 0 24 24&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; aria-hidden=&quot;true&quot;&gt;
+      &lt;path stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot; d=&quot;m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10&quot;&gt;&lt;/path&gt;
+    &lt;/svg&gt;
+    Edit
+&lt;/a&gt;</code></pre><figcaption>Sesuaikan href-nya ke <code>pelanggan.edit</code> dengan parameter <code>$item-&gt;pelanggan_id</code></figcaption></figure><p id="d8c54857-ba46-82fb-91ca-8108945f5aca" class="" dir="auto">
+</p><p id="03554857-ba46-83e9-b25e-815f62ce57cb" class="" dir="auto">Lalu paste pada tag <code>&lt;td&gt;</code> untuk tombol Edit disini:</p><div id="74954857-ba46-820a-ac32-81271b2ea51a" class="column-list" data-notion-column-list="" dir="auto"><div id="6f554857-ba46-82ea-aec6-81cd9bdce18f" style="width:62.5%" class="column" data-notion-column-ratio="0.625" dir="auto"><figure id="d1d54857-ba46-8241-99f1-0175c598b8b3" class="image" data-notion-image="image%2013.png" dir="ltr"><a href="image%2013.png"><img style="width:362.4895935058594px" src="image%2013.png"/></a></figure></div><div id="1f154857-ba46-8208-82a7-8191e730fbc5" style="width:37.50000000000001%" class="column" data-notion-column-ratio="0.37500000000000006" dir="auto"><figure id="21454857-ba46-8296-b6c3-81e2f6ad98dc" class="image" data-notion-image="image%2014.png" dir="ltr"><a href="image%2014.png"><img style="width:303.0113525390625px" src="image%2014.png"/></a></figure></div></div><p id="2f754857-ba46-8397-91cb-8147a49e0c6d" class="" dir="auto">
+</p></div></details><details id="72d54857-ba46-82cc-ad67-0161bd3aed20" open="" class="toggle" dir="auto"><summary>2️⃣ Sesuaikan function <code>edit()</code></summary><div class="indented"><p id="ac254857-ba46-8381-89c7-816df806d0ca" class="" dir="auto">Buat file <code>edit.blade.php</code>  di <code>resources/views/admin/pelanggan</code>  </p><figure id="f5854857-ba46-8322-aa07-0174a098fb9c" class="image" data-notion-image="image%2015.png" dir="ltr"><a href="image%2015.png"><img style="width:240px" src="image%2015.png"/></a></figure><p id="52754857-ba46-829d-89f4-81c787cc2bef" class="" dir="auto">
+</p><p id="85e54857-ba46-83c3-84cb-01d8f0d27a4c" class="" dir="auto">Pada function <code>edit()</code>, ambil data <code>Pelanggan</code> berdasarkan <code>id</code> menggunakan <code>findOrFail</code> lalu kirim ke view <code>admin.pelanggan.edit</code>:</p><pre id="ce854857-ba46-83f1-8480-01cd517e64ab" class="code code-wrap" data-notion-code-syntax="php"><code class="language-php" style="white-space:pre-wrap;word-break:break-all">public function edit(string $id)
+{
+    $data[&#x27;dataPelanggan&#x27;] = Pelanggan::findOrFail($id);
+    return view(&#x27;admin.pelanggan.edit&#x27;, $data);
+}</code></pre><p id="ead54857-ba46-83df-889b-81b6ddd10f10" class="" dir="auto">
+</p><p id="5db54857-ba46-82e0-a730-81f9773b3c27" class="" dir="auto"><code>Pelanggan::findOrFail($id)</code> → eloquent yang mengambil data sesuai <code>$id</code> lalu jika data tidak ditemukan maka secara otomatis menampilkan halaman Not Found</p><p id="e4f54857-ba46-837f-a8b7-018a80966ef1" class="" dir="auto">
+</p></div></details><details id="c1c54857-ba46-8284-af2c-01952b8ad0e4" open="" class="toggle" dir="auto"><summary>3️⃣ Salin seluruh isi <code>create.blade.php</code> → <code>edit.blade.php</code> </summary><div class="indented"><p id="1fc54857-ba46-83b6-b1a5-8133ad3eb52d" class="" dir="auto">Lalu sesuaikan beberapa bagian berikut:</p><ul id="46f54857-ba46-8340-836f-01459f1a1722" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Judul: <strong>Tambah Pelanggan</strong> → <strong>Edit Pelanggan</strong></li></ul><ul id="e8f54857-ba46-821a-8a1a-814557f7d804" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Breadcrumb: <strong>Tambah Data</strong> → <strong>Edit Data</strong></li></ul><ul id="0e954857-ba46-83e5-876f-81036cbfe2ff" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Action form: arahkan ke route berikut dan tambahkan parameter <em>primary key </em><pre id="95d54857-ba46-82a2-9cce-0114de14f3f9" class="code code-wrap" data-notion-code-syntax="php"><code class="language-php" style="white-space:pre-wrap;word-break:break-all">route(&#x27;pelanggan.update&#x27;, $dataPelanggan-&gt;pelanggan_id)</code></pre><p id="50554857-ba46-8318-ad36-81620c61ca7b" class="" dir="auto">
+</p></li></ul><ul id="94954857-ba46-833b-874f-81ff2ee44a7e" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Tambahkan <code>@method(&#x27;PUT&#x27;)</code> setelah <code>@crsf</code><aside class="block-color-gray_background callout" data-notion-callout="" data-notion-callout-icon="🚨" data-notion-callout-background="gray_background" style="white-space:pre-wrap;display:flex" id="94954857-ba46-8300-99ae-01ab110c64aa" dir="ltr"><div style="font-size:1.5em"><span class="icon" data-emoji="🚨"></span></div><div style="width:100%"><p id="de754857-ba46-82d7-8621-81e8e2e7aa57" class="" dir="auto">Hal ini dikarenakan function <code>update()</code> hanya menerima request <code>PUT</code>, jadi kita harus memodifikasi form nya dengan menambah <code>@method(&#x27;PUT&#x27;)</code></p></div></aside><p id="f8054857-ba46-8211-aaf4-01b347081a06" class="" dir="auto">
+</p></li></ul><ul id="79254857-ba46-83af-864e-012938b71c99" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Pastikan <code>value</code> di-set sesuai dengan data dari <em>controller</em>:<ul id="c6c54857-ba46-82fa-a7a2-813a8347a5dc" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><code>value=&quot;{{ $dataPelanggan-&gt;first_name }}&quot;</code></li></ul><ul id="4ba54857-ba46-834b-ac11-013edbe261c9" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><code>value=&quot;{{ $dataPelanggan-&gt;last_name }}&quot;</code></li></ul><ul id="23e54857-ba46-839a-a106-81273046c315" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><code>value=&quot;{{ $dataPelanggan-&gt;email }}&quot;</code></li></ul><ul id="0c154857-ba46-829e-ad79-010ce471026e" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><code>value=&quot;{{ $dataPelanggan-&gt;phone }}&quot;</code></li></ul><ul id="a5a54857-ba46-8352-ae28-018bf20ae260" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><code>value=&quot;{{ $dataPelanggan-&gt;birthday }}&quot;</code></li></ul><ul id="a5154857-ba46-8241-aea4-81fc0fb82262" class="bulleted-list" dir="auto"><li style="list-style-type:circle">untuk pilihan Gender memiliki cara yang berbeda dalam memberikan value<figure id="46a54857-ba46-8328-adec-01638bccca80" class="image" data-notion-image="image%2016.png" dir="ltr"><a href="image%2016.png"><img style="width:596.0510864257812px" src="image%2016.png"/></a></figure><p id="ab054857-ba46-820f-b4f4-0163cf5e5d89" class="" dir="auto">
+</p></li></ul></li></ul><ul id="11054857-ba46-8311-9187-011b01817416" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Tombol: teks <strong>Simpan</strong> → <strong>Simpan Perubahan</strong> dan class <code>btn-info</code></li></ul><p id="31854857-ba46-83ee-88c8-81a46472472a" class="" dir="auto">
+</p><hr id="f3f54857-ba46-8219-906a-019c2449d08b" dir="auto"/><p id="37f54857-ba46-826c-8850-01995855abc4" class="" dir="auto">Berikut hasil akhir form perubahan data pelanggan</p><figure id="21f54857-ba46-83c1-84a8-813ad930ef43" class="image" data-notion-image="image%2017.png" dir="ltr"><a href="image%2017.png"><img style="width:654.00244140625px" src="image%2017.png"/></a></figure><p id="4ee54857-ba46-83e9-a823-816cf8014782" class="" dir="auto">
+</p></div></details><details id="75c54857-ba46-8322-9b3f-815b2d24c251" open="" class="toggle" dir="auto"><summary>4️⃣ Sesuaikan function <code>update()</code> </summary><div class="indented"><p id="23a54857-ba46-832a-93b8-016c98eec85e" class="" dir="auto">Terapkan kode berikut:</p><figure id="76654857-ba46-8243-a396-81ea830d84b0" class="image" data-notion-image="image%2018.png" dir="ltr"><a href="image%2018.png"><img style="width:625.9896240234375px" src="image%2018.png"/></a></figure><p id="cdd54857-ba46-83b5-a2e3-017a8e2696fe" class="" dir="auto">
+</p><p id="7a254857-ba46-83fb-b196-0111d8c79142" class="" dir="auto">Silahkan tes edit data, informasi success akan tampil di halaman list pelanggan</p><figure id="0cd54857-ba46-837c-bcb8-81269e2c2dbf" class="image" data-notion-image="4765434c-12ed-4f63-89f3-c4532ad85a26.png" dir="ltr"><a href="4765434c-12ed-4f63-89f3-c4532ad85a26.png"><img style="width:288px" src="4765434c-12ed-4f63-89f3-c4532ad85a26.png"/></a></figure><p id="f8d54857-ba46-824c-bcb8-01616c303add" class="" dir="auto">
+</p><p id="93554857-ba46-8345-9822-81b3b26bc18f" class="" dir="auto"><em>Jangan lupa git push!</em></p></div></details><p id="06954857-ba46-8284-a179-011492cd0a1f" class="" dir="auto">
+</p><hr id="ef554857-ba46-8264-90e1-01d7ee2f17eb" dir="auto"/></div></details><details open="" class="" dir="auto"><summary style="font-weight:600;font-size:1.875em;line-height:1.3;margin:0"><h1 id="33e54857-ba46-825f-9297-811aa93717d7" style="display:inline-block">📂 Destroy</h1></summary><div class="indented"><p id="f7154857-ba46-8355-b73e-0164c812ac6d" class="" dir="auto">Aksi <code>destroy</code> dilakukan dengan mengirimkan request <code>DELETE</code> , sehingga kita butuh sebuah form yang membungkus tombol “Hapus” agar request diterima oleh Laravel</p><details id="2a254857-ba46-8352-b5b9-01efb16ad399" open="" class="toggle" dir="auto"><summary>1️⃣ Tambahkan tombol “Hapus” pada kolom “Action” setelah tombl “Edit”</summary><div class="indented"><figure id="90e54857-ba46-82e6-a39f-01ed7d529178" data-notion-code-syntax="html"><pre class="code code-wrap" data-notion-code-syntax="html"><code class="language-html" style="white-space:pre-wrap;word-break:break-all">&lt;form action=&quot;&quot; method=&quot;POST&quot; style=&quot;display:inline&quot;&gt;
+    @csrf
+    @method(&quot;DELETE&quot;)
+    &lt;button type=&quot;submit&quot; class=&quot;btn btn-danger btn-sm&quot;&gt;
+        &lt;svg class=&quot;icon icon-xs me-2&quot; data-slot=&quot;icon&quot; fill=&quot;none&quot; stroke-width=&quot;1.5&quot; stroke=&quot;currentColor&quot; viewBox=&quot;0 0 24 24&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; aria-hidden=&quot;true&quot;&gt;
+            &lt;path stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot; d=&quot;m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0&quot;&gt;&lt;/path&gt;
+            &lt;/svg&gt;
+        Hapus
+    &lt;/button&gt;
+&lt;/form&gt;</code></pre><figcaption>Jangan lupa sesuaikan action!</figcaption></figure><p id="70054857-ba46-82e8-a7db-01e13b5c87fe" class="" dir="auto">Lalu paste pada setelah tombol Edit :</p><div id="a0c54857-ba46-8384-9f76-0179c8cf654f" class="column-list" data-notion-column-list="" dir="auto"><div id="c9154857-ba46-8232-b985-81a45f756cda" style="width:56.25%" class="column" data-notion-column-ratio="0.5625" dir="auto"><figure id="18954857-ba46-82cd-94d6-81cc15210a69" class="image" data-notion-image="image%2019.png" dir="ltr"><a href="image%2019.png"><img style="width:341.9866027832031px" src="image%2019.png"/></a></figure><p id="2fb54857-ba46-8379-b07f-0150f6ebf364" class="" dir="auto">
+</p></div><div id="c4e54857-ba46-834d-b7d6-0156ce42e426" style="width:43.75000000000001%" class="column" data-notion-column-ratio="0.43750000000000006" dir="auto"><figure id="7ec54857-ba46-8386-a581-01e76dd18928" class="image" data-notion-image="image%2020.png" dir="ltr"><a href="image%2020.png"><img style="width:240px" src="image%2020.png"/></a></figure><p id="47354857-ba46-832d-8962-817526bc32c4" class="" dir="auto">
+</p></div></div></div></details><details id="2bd54857-ba46-8395-9492-81bbb52e4a4f" open="" class="toggle" dir="auto"><summary>2️⃣ Sesuaikan function <code>destroy()</code></summary><div class="indented"><p id="0c254857-ba46-8210-9bad-0148d90dfdc7" class="" dir="auto">Terapkan kode berikut:</p><figure id="15954857-ba46-83a0-a5dc-0133c7eebe3d" class="image" data-notion-image="image%2021.png" dir="ltr"><a href="image%2021.png"><img style="width:653.9732055664062px" src="image%2021.png"/></a></figure><p id="9be54857-ba46-8395-85d3-81f9ae2e38c6" class="" dir="auto">
+</p><p id="00254857-ba46-82cd-a27e-81c1b6115d37" class="" dir="auto">Silahkan tes hapus data, informasi success akan tampil di halaman list pelanggan</p><figure id="73254857-ba46-82a8-862b-014d8838a04c" class="image" style="text-align:left" data-notion-image="image%2022.png" dir="ltr"><a href="image%2022.png"><img style="width:384px" src="image%2022.png"/></a></figure><p id="e0354857-ba46-82a2-bc0b-8186e67fca06" class="" dir="auto">
+</p><p id="d2e54857-ba46-82d8-967e-81a4ae4a20b1" class="" dir="auto"><em>Jangan lupa git push!</em></p></div></details><p id="c1854857-ba46-82d5-8363-816abf1cb78d" class="" dir="auto">
+</p><hr id="84054857-ba46-83a7-8edb-81867cb44ac7" dir="auto"/></div></details><p id="5fa54857-ba46-8207-aa93-01d1e636dabc" class="" dir="auto">
+</p><hr id="c0554857-ba46-82b2-b1a7-019aa3f37ddc" dir="auto"/><p id="41c54857-ba46-8314-885f-81d245d4dc19" class="" dir="auto">
+</p><aside class="block-color-default_background callout" data-notion-callout="" data-notion-callout-icon="📌" data-notion-callout-background="default_background" style="white-space:pre-wrap;display:flex" id="76e54857-ba46-8324-bcf7-018853a6f599" dir="ltr"><div style="font-size:1.5em"><span class="icon" data-emoji="📌"></span></div><div style="width:100%"><p id="25454857-ba46-82a5-a106-813bd332885f" class="" dir="auto">Silahkan lengkapi function <code>store()</code> dan <code>update()</code> dengan rule validasi berikut:</p><ul id="9ce54857-ba46-8346-a73a-816b84f27bf5" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>first_name</strong> wajib diisi.</li></ul><ul id="12954857-ba46-838c-888d-011ca574971a" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>last_name</strong> wajib diisi.</li></ul><ul id="ea054857-ba46-827c-aa55-817777e096c2" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>birthday</strong> wajib diisi dan harus berupa <strong>tanggal</strong>.</li></ul><ul id="13d54857-ba46-8276-9be0-011639fa2954" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>gender</strong> wajib diisi dan hanya boleh bernilai <strong>Male</strong> atau <strong>Female</strong>.</li></ul><ul id="4c754857-ba46-8345-bc79-0160dcb05f8b" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>email</strong> wajib diisi dan harus dalam format <strong>email yang valid</strong>.</li></ul><ul id="e4f54857-ba46-838f-ae31-01d04ee53767" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>phone</strong> wajib diisi dan harus berupa <strong>angka (numeric)</strong>.</li></ul><p id="5b154857-ba46-823d-954b-019fa6b9008f" class="" dir="auto">Jangan lupa untuk  menampilkan informasi error tersebut di form <code>create</code> dan <code>edit</code></p><p id="c1654857-ba46-83b2-9a31-8115d737b90b" class="" dir="auto">
+</p><hr id="3ab54857-ba46-8310-a513-814e0604cef9" dir="auto"/><p id="02854857-ba46-8351-9ba2-0198bb410c89" class="" dir="auto">
+</p><p id="08154857-ba46-8394-920e-0189aa8fcef2" class="" dir="auto">Pada form yang ada di  <code>create.blade.php</code>, terapkan repopulate form. Contoh:</p><ul id="66d54857-ba46-8395-8758-01f719ae272e" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><code>value=&quot;{{ old(&#x27;first_name&#x27;) }}&quot;</code></li></ul><p id="e4b54857-ba46-8256-9c1b-014a7a4a49d9" class="" dir="auto">
+</p><p id="9cc54857-ba46-8398-86fe-818e955c5774" class="" dir="auto">Pada form  yang ada di<code>edit.blade.php</code>, terapkan repopulate form. Contoh:</p><ul id="21454857-ba46-83cb-a929-01a254d24156" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><code>value=&quot;{{ old(&#x27;first_name&#x27;, $dataPelanggan-&gt;first_name) }}&quot;</code></li></ul><p id="5f954857-ba46-82cc-96a0-81d7e61c8fcc" class="" dir="auto">
+</p></div></aside><p id="9ba54857-ba46-8351-b42d-0112e3b4a76f" class="" dir="auto">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
