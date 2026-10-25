@@ -3,13 +3,13 @@
 
 <head>
     <meta charset="utf-8">
-    <title>CarServ - Car Repair HTML Template</title>
+    <title>Daffa Service | Car Repair & Service</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
 
     <!-- Favicon -->
-    <link href="img/favicon.ico" rel="icon">
+    <link href="img/Red Black Realistic Car Engine Automotive Logo.png" rel="icon">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -75,7 +75,8 @@
     <!-- Navbar Start -->
     <nav class="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
         <a href="index.html" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
-            <h2 class="m-0 text-primary"><i class="c:\Users\Cyborg 15\Downloads\Red Black Realistic Car Engine Automotive Logo.png"></i>c:\Users\Cyborg 15\Downloads\Red Black Realistic Car Engine Automotive Logo.png</h2>
+            <img src="img/Red Black Realistic Car Engine Automotive Logo.png" alt="Daffa Service Logo" class="brand-logo me-2">
+            <span class="brand-text text-primary">Daffa Service</span>
         </a>
         <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
             <span class="navbar-toggler-icon"></span>
@@ -91,6 +92,7 @@
                         <a href="booking.html" class="dropdown-item">Booking</a>
                         <a href="team.html" class="dropdown-item">Technicians</a>
                         <a href="testimonial.html" class="dropdown-item">Testimonial</a>
+                        <a href="admin.html" class="dropdown-item">Admin Dashboard</a>
                         <a href="404.html" class="dropdown-item">404 Page</a>
                     </div>
                 </div>
@@ -211,7 +213,7 @@
                 </div>
                 <div class="col-lg-6">
                     <h6 class="text-primary text-uppercase">// About Us //</h6>
-                    <h1 class="mb-4"><span class="text-primary">CarServ</span> Is The Best Place For Your Auto Care</h1>
+                    <h1 class="mb-4"><span class="text-primary">Daffa Service</span> Is The Best Place For Your Auto Care</h1>
                     <p class="mb-4">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo justo magna dolore erat amet</p>
                     <div class="row g-4 mb-3 pb-3">
                         <div class="col-12 wow fadeIn" data-wow-delay="0.1s">

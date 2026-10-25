@@ -113,6 +113,20 @@
     height: 75px;
 }
 
+.navbar-brand .brand-logo {
+    width: 54px;
+    height: 54px;
+    object-fit: contain;
+    border-radius: 12px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+}
+
+.navbar-brand .brand-text {
+    font-size: 1.6rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+}
+
 .navbar-light .navbar-nav .nav-link {
     color: var(--dark);
     font-weight: 500;
