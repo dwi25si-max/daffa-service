@@ -86,6 +86,7 @@
                 <a href="/service" class="nav-item nav-link">Service</a>
                 <a href="/team" class="nav-item nav-link">Technician</a>
                 <a href="/contact" class="nav-item nav-link">Contact</a>
+                <a href="{{ route('pelanggan.index') }}" class="nav-item nav-link text-danger fw-bold"><i class="fa fa-user-cog me-1"></i> Admin</a>
             </div>
         </div>
     </nav>
