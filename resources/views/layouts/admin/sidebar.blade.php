@@ -13,7 +13,7 @@
     <ul class="nav flex-column">
         <li class="nav-header">Utama</li>
         <li class="nav-item">
-            <a href="{{ route('dashboard') }}" class="nav-link {{ request()->routeIs('dashboard') ? 'active' : '' }}">
+            <a href="{{ route('admin.dashboard') }}" class="nav-link {{ request()->routeIs('admin.dashboard') || request()->routeIs('dashboard') ? 'active' : '' }}">
                 <i class="fa fa-tachometer-alt me-2" style="width: 20px;"></i> Dashboard
             </a>
         </li>

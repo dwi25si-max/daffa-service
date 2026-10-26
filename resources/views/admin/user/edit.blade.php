@@ -47,8 +47,8 @@
                     </label>
                     <div class="input-group">
                         <span class="input-group-text"><i class="fa fa-user"></i></span>
-                        <input type="text" id="name" name="name" 
-                               class="form-control @error('name') is-invalid @enderror" 
+                        <input type="text" id="name" name="name"
+                               class="form-control @error('name') is-invalid @enderror"
                                value="{{ old('name', $user->name) }}" required>
                         @error('name')
                             <div class="invalid-feedback">{{ $message }}</div>
@@ -63,8 +63,8 @@
                     </label>
                     <div class="input-group">
                         <span class="input-group-text"><i class="fa fa-envelope"></i></span>
-                        <input type="email" id="email" name="email" 
-                               class="form-control @error('email') is-invalid @enderror" 
+                        <input type="email" id="email" name="email"
+                               class="form-control @error('email') is-invalid @enderror"
                                value="{{ old('email', $user->email) }}" required>
                         @error('email')
                             <div class="invalid-feedback">{{ $message }}</div>
@@ -79,8 +79,8 @@
                     </label>
                     <div class="input-group">
                         <span class="input-group-text"><i class="fa fa-lock"></i></span>
-                        <input type="password" id="password" name="password" 
-                               class="form-control @error('password') is-invalid @enderror" 
+                        <input type="password" id="password" name="password"
+                               class="form-control @error('password') is-invalid @enderror"
                                placeholder="Biarkan kosong jika tidak diubah">
                         @error('password')
                             <div class="invalid-feedback">{{ $message }}</div>
@@ -103,4 +103,5 @@
     </div>
 </div>
 @endsection
+
 

@@ -46,8 +46,8 @@
                     </label>
                     <div class="input-group">
                         <span class="input-group-text"><i class="fa fa-user"></i></span>
-                        <input type="text" id="name" name="name" 
-                               class="form-control @error('name') is-invalid @enderror" 
+                        <input type="text" id="name" name="name"
+                               class="form-control @error('name') is-invalid @enderror"
                                placeholder="Contoh: Daffa Al Ghifari"
                                value="{{ old('name') }}" required>
                         @error('name')
@@ -63,8 +63,8 @@
                     </label>
                     <div class="input-group">
                         <span class="input-group-text"><i class="fa fa-envelope"></i></span>
-                        <input type="email" id="email" name="email" 
-                               class="form-control @error('email') is-invalid @enderror" 
+                        <input type="email" id="email" name="email"
+                               class="form-control @error('email') is-invalid @enderror"
                                placeholder="Contoh: user@daffaservice.com"
                                value="{{ old('email') }}" required>
                         @error('email')
@@ -80,8 +80,8 @@
                     </label>
                     <div class="input-group">
                         <span class="input-group-text"><i class="fa fa-lock"></i></span>
-                        <input type="password" id="password" name="password" 
-                               class="form-control @error('password') is-invalid @enderror" 
+                        <input type="password" id="password" name="password"
+                               class="form-control @error('password') is-invalid @enderror"
                                placeholder="Minimal 6 karakter"
                                required>
                         @error('password')
@@ -105,4 +105,5 @@
     </div>
 </div>
 @endsection
+
 

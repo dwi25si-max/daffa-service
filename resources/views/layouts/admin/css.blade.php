@@ -27,7 +27,7 @@
         margin-bottom: 4px;
         transition: all 0.2s ease-in-out;
     }
-    .sidebar .nav-link:hover, 
+    .sidebar .nav-link:hover,
     .sidebar .nav-link.active {
         color: #ffffff;
         background-color: #dc2626;
@@ -54,4 +54,5 @@
         font-weight: 600;
     }
 </style>
+
 
