@@ -8,7 +8,6 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-<!-- Custom Styles for Admin -->
 <style>
     body {
         font-family: 'Ubuntu', sans-serif;
@@ -27,32 +26,8 @@
         margin-bottom: 4px;
         transition: all 0.2s ease-in-out;
     }
-    .sidebar .nav-link:hover,
-    .sidebar .nav-link.active {
+    .sidebar .nav-link:hover, .sidebar .nav-link.active {
         color: #ffffff;
         background-color: #dc2626;
     }
-    .sidebar .nav-header {
-        font-size: 0.75rem;
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
-        color: #9ca3af;
-        margin-top: 1rem;
-        margin-bottom: 0.5rem;
-        padding-left: 0.75rem;
-    }
-    .card {
-        border-radius: 12px;
-    }
-    .table thead th {
-        font-weight: 600;
-        letter-spacing: 0.03em;
-    }
-    .badge-admin {
-        background-color: rgba(220, 38, 38, 0.12);
-        color: #dc2626;
-        font-weight: 600;
-    }
 </style>
-
-

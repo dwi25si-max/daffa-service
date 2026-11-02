@@ -1,5 +1,5 @@
 <!-- Favicon -->
-<link href="{{ asset('img/favicon.ico') }}" rel="icon">
+<link href="{{ asset('img/logo.png') }}" rel="icon">
 
 <!-- Google Web Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -18,19 +18,3 @@
 
 <!-- Template Stylesheet -->
 <link href="{{ asset('css/style.css') }}" rel="stylesheet">
-
-<style>
-    .auth-card {
-        border-radius: 16px;
-        box-shadow: 0 15px 35px rgba(0,0,0,0.1);
-        border: none;
-    }
-    .auth-header {
-        background: linear-gradient(135deg, #0b2154 0%, #d81324 100%);
-        border-top-left-radius: 16px;
-        border-top-right-radius: 16px;
-        color: #fff;
-        padding: 30px;
-    }
-</style>
-

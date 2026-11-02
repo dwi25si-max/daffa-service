@@ -13,8 +13,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        $data['dataUser'] = User::orderBy('id', 'desc')->get();
-        return view('admin.user.index', $data);
+        $users = User::all();
+        return view('admin.user.index', compact('users'));
     }
 
     /**
@@ -30,28 +30,30 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        $validated = $request->validate([
-            'name'     => 'required|string|max:255',
-            'email'    => 'required|email|max:255|unique:users,email',
-            'password' => 'required|string|min:6',
+        $request->validate([
+            'name'                  => 'required|string|max:100',
+            'email'                 => 'required|email|unique:users,email',
+            'password'              => 'required|min:8|confirmed',
         ], [
-            'name.required'     => 'Nama wajib diisi.',
-            'name.string'       => 'Nama harus berupa string.',
-            'name.max'          => 'Nama maksimal 255 karakter.',
-            'email.required'    => 'Email wajib diisi.',
-            'email.email'       => 'Format email tidak valid.',
-            'email.unique'      => 'Email sudah terdaftar di sistem.',
-            'password.required' => 'Password wajib diisi.',
-            'password.min'      => 'Password minimal harus 6 karakter.',
+            'name.required'         => 'Nama lengkap wajib diisi.',
+            'name.string'           => 'Nama harus berupa karakter teks valid.',
+            'name.max'              => 'Nama maksimal 100 karakter.',
+            'email.required'        => 'Email wajib diisi.',
+            'email.email'           => 'Format email tidak valid.',
+            'email.unique'          => 'Email sudah terdaftar di sistem.',
+            'password.required'     => 'Password wajib diisi.',
+            'password.min'          => 'Password minimal harus 8 karakter.',
+            'password.confirmed'    => 'Konfirmasi password tidak cocok.',
         ]);
 
         User::create([
-            'name'     => $validated['name'],
-            'email'    => $validated['email'],
-            'password' => Hash::make($validated['password']),
+            'name'     => $request->name,
+            'email'    => $request->email,
+            'password' => Hash::make($request->password),
         ]);
 
-        return redirect()->route('user.index')->with('success', 'User berhasil ditambahkan!');
+        return redirect()->route('user.index')
+                         ->with('success', 'User berhasil ditambahkan!');
     }
 
     /**
@@ -59,8 +61,7 @@ class UserController extends Controller
      */
     public function show(string $id)
     {
-        $data['user'] = User::findOrFail($id);
-        return view('admin.user.show', $data);
+        //
     }
 
     /**
@@ -68,8 +69,8 @@ class UserController extends Controller
      */
     public function edit(string $id)
     {
-        $data['user'] = User::findOrFail($id);
-        return view('admin.user.edit', $data);
+        $user = User::findOrFail($id);
+        return view('admin.user.edit', compact('user'));
     }
 
     /**
@@ -79,31 +80,34 @@ class UserController extends Controller
     {
         $user = User::findOrFail($id);
 
-        $validated = $request->validate([
-            'name'     => 'required|string|max:255',
-            'email'    => 'required|email|max:255|unique:users,email,' . $id,
-            'password' => 'nullable|string|min:6',
+        $request->validate([
+            'name'                  => 'required|string|max:100',
+            'email'                 => 'required|email|unique:users,email,' . $user->id,
+            'password'              => 'nullable|min:8|confirmed',
         ], [
-            'name.required'  => 'Nama wajib diisi.',
-            'name.string'    => 'Nama harus berupa string.',
-            'name.max'       => 'Nama maksimal 255 karakter.',
-            'email.required' => 'Email wajib diisi.',
-            'email.email'    => 'Format email tidak valid.',
-            'email.unique'   => 'Email sudah terdaftar di sistem.',
-            'password.min'   => 'Password minimal harus 6 karakter.',
+            'name.required'         => 'Nama lengkap wajib diisi.',
+            'name.string'           => 'Nama harus berupa karakter teks valid.',
+            'name.max'              => 'Nama maksimal 100 karakter.',
+            'email.required'        => 'Email wajib diisi.',
+            'email.email'           => 'Format email tidak valid.',
+            'email.unique'          => 'Email sudah terdaftar di sistem.',
+            'password.min'          => 'Password minimal harus 8 karakter.',
+            'password.confirmed'    => 'Konfirmasi password tidak cocok.',
         ]);
 
-        $user->name = $validated['name'];
-        $user->email = $validated['email'];
+        $data = [
+            'name'  => $request->name,
+            'email' => $request->email,
+        ];
 
-        // Hash password baru jika diisi
-        if (!empty($validated['password'])) {
-            $user->password = Hash::make($validated['password']);
+        if ($request->filled('password')) {
+            $data['password'] = Hash::make($request->password);
         }
 
-        $user->save();
+        $user->update($data);
 
-        return redirect()->route('user.index')->with('success', 'Data user berhasil diperbarui!');
+        return redirect()->route('user.index')
+                         ->with('success', 'User berhasil diperbarui!');
     }
 
     /**
@@ -114,7 +118,7 @@ class UserController extends Controller
         $user = User::findOrFail($id);
         $user->delete();
 
-        return redirect()->route('user.index')->with('success', 'Data user berhasil dihapus!');
+        return redirect()->route('user.index')
+                         ->with('success', 'User berhasil dihapus!');
     }
 }
-

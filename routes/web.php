@@ -1,40 +1,63 @@
 <?php
 
-use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PelangganController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\LayananController;
+use App\Http\Controllers\TeknisiController;
+use App\Models\Layanan;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
 | Web Routes - Daffa Service
 |--------------------------------------------------------------------------
+|
+| 1. Route Halaman Guest ('/'):
+|    - Mengambil data Layanan menggunakan ELOQUENT ORM (Layanan::with('teknisi')->get()).
+|    - Mengambil data Teknisi menggunakan QUERY BUILDER (DB::table('teknisi')->join(...)->get()).
+|    - Menampilkan data pada view 'index' yang sudah menerapkan Partial View modular.
+|
+| 2. Route Admin CRUD:
+|    - Pelanggan (PelangganController)
+|    - User (UserController)
+|    - Layanan (LayananController - ELOQUENT ORM)
+|    - Teknisi (TeknisiController - QUERY BUILDER)
+|
 */
 
-// ─── Soal 1 & 2: Tampilan Guest (Home, Login, Register) ─────────────────────
+// Halaman Publik / Guest dengan Partial View
 Route::get('/', function () {
-    return view('guest.home');
-})->name('home');
+    // 1. Ambil data Layanan via ELOQUENT ORM beserta relasi Teknisi
+    try {
+        $layanan = Layanan::with('teknisi')->orderBy('id', 'asc')->get();
+    } catch (\Throwable $e) {
+        $layanan = collect();
+    }
 
-Route::get('/auth', [AuthController::class, 'showLogin'])->name('login');
-Route::post('/auth', [AuthController::class, 'login'])->name('login.process');
+    // 2. Ambil data Teknisi via QUERY BUILDER (Join dengan tabel layanan)
+    try {
+        $teknisi = DB::table('teknisi')
+            ->join('layanan', 'teknisi.layanan_id', '=', 'layanan.id')
+            ->select('teknisi.*', 'layanan.nama_layanan as spesialisasi_layanan')
+            ->where('teknisi.status', 'Aktif')
+            ->orderBy('teknisi.id', 'asc')
+            ->get();
+    } catch (\Throwable $e) {
+        $teknisi = collect();
+    }
 
-Route::get('/register', function () {
-    return view('guest.register');
-})->name('register');
-Route::post('/register', [AuthController::class, 'register'])->name('register.process');
-
-// ─── Dashboard Admin (Tujuan Login Sukses) ──────────────────────────────────
-Route::get('/admin/dashboard', [AuthController::class, 'dashboard'])->name('admin.dashboard');
-Route::get('/dashboard', function () {
-    return redirect()->route('admin.dashboard');
+    return view('index', compact('layanan', 'teknisi'));
 })->name('dashboard');
 
-// ─── CRUD Modul Admin ────────────────────────────────────────────────────────
+// Resource Routes CRUD Admin
 Route::resource('pelanggan', PelangganController::class);
 Route::resource('user', UserController::class);
+Route::resource('layanan', LayananController::class);
+Route::resource('teknisi', TeknisiController::class);
 
-// ─── CRUD Modul Admin ────────────────────────────────────────────────────────
-Route::resource('pelanggan', PelangganController::class);
-Route::resource('user', UserController::class);
-
+// Demo route bila dibutuhkan
+Route::get('/demo-success', function () {
+    return redirect()->route('pelanggan.index')
+                     ->with('success', 'Operasi Berhasil!');
+});
